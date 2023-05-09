@@ -1,0 +1,136 @@
+import React from 'react';
+import { Layout, Menu, Breadcrumb, Button, Message } from '@arco-design/web-react';
+import { IconHome, IconCalendar, IconCaretRight, IconCaretLeft } from '@arco-design/web-react/icon';
+
+const MenuItem = Menu.Item;
+const SubMenu = Menu.SubMenu;
+const Sider = Layout.Sider;
+const Header = Layout.Header;
+const Footer = Layout.Footer;
+const Content = Layout.Content;
+
+class Home extends React.Component {
+  state = {
+    collapsed: false,
+    itemName: '商品管理',
+  };
+  handleCollapsed = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  };
+
+  render() {
+    return (
+      <Layout className='layout-collapse-demo'>
+        <Sider collapsed={this.state.collapsed} collapsible trigger={null} breakpoint='xl'>
+          <div className='logo' />
+          <Menu
+            defaultOpenKeys={['1']}
+            defaultSelectedKeys={['0_3']}
+            onClickMenuItem={(key) =>
+              Message.info({
+                content: `You select ${key.itemname}`,
+                showIcon: true,
+                
+              }, 
+              (itemname)=>this.setState({  
+                itemName: `${itemname}`,
+                })
+              
+              )
+            }
+            style={{ width: '100%' }}
+          >
+            <MenuItem key='0_1' disabled>
+              <IconHome />
+              Menu 1
+            </MenuItem>
+
+            <SubMenu
+              key='1'
+              title={
+                <span>
+                  <IconCalendar />
+                  基础管理
+                </span>
+              }
+            >
+              <MenuItem key='1_1' itemname="商品管理">商品管理</MenuItem>
+            </SubMenu>
+            <SubMenu
+              key='2'
+              title={
+                <span>
+                  <IconCalendar />
+                  订单管理
+                </span>
+              }
+            >
+              <MenuItem key='2_1' itemname="交易订单">交易订单</MenuItem>
+            </SubMenu>
+
+            <SubMenu
+              key='3'
+              title={
+                <span>
+                  <IconCalendar />
+                  系统管理
+                </span>
+              }
+            >
+              <MenuItem key='3_1' itemname="用户管理">用户管理</MenuItem>   
+              <MenuItem key='3_2' itemname="菜单管理">菜单管理</MenuItem>   
+              <MenuItem key='3_3'>角色管理</MenuItem>    
+              <MenuItem key='3_4'>公司管理</MenuItem>    
+              <MenuItem key='3_5'>系统环境变量</MenuItem>    
+              <MenuItem key='3_6'>权限管理</MenuItem>    
+            </SubMenu>
+            <SubMenu
+              key='4'
+              title={
+                <span>
+                  <IconCalendar />
+                  支付管理
+                </span>
+              }
+            >
+              <MenuItem key='4_1'>支付配置信息</MenuItem>        
+              <MenuItem key='4_2'>支付配置</MenuItem>    
+            </SubMenu>
+            <SubMenu
+              key='5'
+              title={
+                <span>
+                  <IconCalendar />
+                  图表
+                </span>
+              }
+            >
+              <MenuItem key='5_1'>数据可视化</MenuItem>         
+            </SubMenu>
+          </Menu>
+        </Sider>
+        <Layout>
+          <Header>
+            <Button shape='round' className='trigger' onClick={this.handleCollapsed}>
+              {this.state.collapsed ? <IconCaretRight /> : <IconCaretLeft />}
+            </Button>
+          </Header>
+          <Layout style={{ padding: '0 24px' }}>
+            <Breadcrumb style={{ margin: '16px 0' }}>
+              <Breadcrumb.Item>首页</Breadcrumb.Item>
+              <Breadcrumb.Item>List</Breadcrumb.Item>
+              <Breadcrumb.Item>{this.state.itemName}</Breadcrumb.Item>
+            </Breadcrumb>
+            <Content>Content</Content>
+            <Footer>Footer</Footer>
+          </Layout>
+        </Layout>
+      </Layout>
+      
+    );
+  }
+}
+
+export default Home;
