@@ -24,9 +24,19 @@ npm install react-router-dom@6
 
 
 
+## 使用
+
+对arco-design的使用
+
+[arco-design](./note/arco-design.md)
+
+
+
 
 
 ### 可用脚本
+
+> 默认打包构建工具是webpack
 
 在项目文件夹下，运行项目：
 
