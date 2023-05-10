@@ -27,15 +27,14 @@ class Home extends React.Component {
           <div className='logo' />
           <Menu
             defaultOpenKeys={['1']}
-            defaultSelectedKeys={['0_3']}
-            onClickMenuItem={(key) =>
+            defaultSelectedKeys={['1_1']}
+            onClickMenuItem={(key,event) =>
               Message.info({
-                content: `You select ${key.itemname}`,
+                content: `You select ${key}, ${event.target.innerText}`,
                 showIcon: true,
-                
               }, 
-              (itemname)=>this.setState({  
-                itemName: `${itemname}`,
+              this.setState({  
+                itemName: event.target.innerText,
                 })
               
               )
@@ -120,7 +119,7 @@ class Home extends React.Component {
           <Layout style={{ padding: '0 24px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>首页</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
+              {/* <Breadcrumb.Item>List</Breadcrumb.Item> */}
               <Breadcrumb.Item>{this.state.itemName}</Breadcrumb.Item>
             </Breadcrumb>
             <Content>Content</Content>
