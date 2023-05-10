@@ -1,6 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom/client';
+import CommodityManagement from "../common/CommodityManagement";
 import { Layout, Menu, Breadcrumb, Button, Message } from '@arco-design/web-react';
 import { IconHome, IconCalendar, IconCaretRight, IconCaretLeft } from '@arco-design/web-react/icon';
+import { Route, Routes } from 'react-router-dom';
 
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
@@ -122,7 +125,12 @@ class Home extends React.Component {
               {/* <Breadcrumb.Item>List</Breadcrumb.Item> */}
               <Breadcrumb.Item>{this.state.itemName}</Breadcrumb.Item>
             </Breadcrumb>
-            <Content>Content</Content>
+            <Content>
+              <Routes>
+                <Route path='/' element={<CommodityManagement />} />
+                <Route path='/commodityManagement' element={<CommodityManagement />} />
+              </Routes>
+            </Content>
             <Footer>Footer</Footer>
           </Layout>
         </Layout>
