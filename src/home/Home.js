@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import CommodityManagement from "../common/CommodityManagement";
+// import CommodityManagement from "../common/CommodityManagement";
+// import CommodityManagementChange from "../common/CommodityManageChange"
 import { Layout, Menu, Breadcrumb, Button, Message } from '@arco-design/web-react';
 import { IconHome, IconCalendar, IconCaretRight, IconCaretLeft } from '@arco-design/web-react/icon';
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes,Outlet,NavLink} from 'react-router-dom';
 
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
@@ -12,17 +13,20 @@ const Header = Layout.Header;
 const Footer = Layout.Footer;
 const Content = Layout.Content;
 
+
 class Home extends React.Component {
   state = {
     collapsed: false,
     itemName: '商品管理',
+    itemId: '1_1',
+    itemLink: "",
   };
   handleCollapsed = () => {
     this.setState({
       collapsed: !this.state.collapsed,
     });
   };
-
+   
   render() {
     return (
       <Layout className='layout-collapse-demo'>
@@ -33,14 +37,17 @@ class Home extends React.Component {
             defaultSelectedKeys={['1_1']}
             onClickMenuItem={(key,event) =>
               Message.info({
-                content: `You select ${key}, ${event.target.innerText}`,
+                content: `You select ${key}, ${event.target.innerText}   ${this.state.itemLink}`,
                 showIcon: true,
               }, 
+             
               this.setState({  
                 itemName: event.target.innerText,
-                })
-              
+                itemId: key,
+                // itemLink: key=="3_1"?"commodityManagementChange":"commodityManagement",
+                }),
               )
+              
             }
             style={{ width: '100%' }}
           >
@@ -69,7 +76,7 @@ class Home extends React.Component {
                 </span>
               }
             >
-              <MenuItem key='2_1' itemname="交易订单">交易订单</MenuItem>
+              <MenuItem key='2_1' itemname="交易订单" ><Link to="CommodityManagementChange">交易订单</Link></MenuItem>
             </SubMenu>
 
             <SubMenu
@@ -81,7 +88,7 @@ class Home extends React.Component {
                 </span>
               }
             >
-              <MenuItem key='3_1' itemname="用户管理">用户管理</MenuItem>   
+              <MenuItem key='3_1' itemname="用户管理"><Link to={this.state.itemLink}>用户管理</Link></MenuItem>   
               <MenuItem key='3_2' itemname="菜单管理">菜单管理</MenuItem>   
               <MenuItem key='3_3'>角色管理</MenuItem>    
               <MenuItem key='3_4'>公司管理</MenuItem>    
@@ -126,10 +133,14 @@ class Home extends React.Component {
               <Breadcrumb.Item>{this.state.itemName}</Breadcrumb.Item>
             </Breadcrumb>
             <Content>
-              <Routes>
+              {/* <Routes>
+              
                 <Route path='/' element={<CommodityManagement />} />
                 <Route path='/commodityManagement' element={<CommodityManagement />} />
-              </Routes>
+                
+                <Route path='/commodityManagementChange' element={<CommodityManagementChange/>}/>
+              </Routes> */}
+              <Outlet/>
             </Content>
             <Footer>Footer</Footer>
           </Layout>

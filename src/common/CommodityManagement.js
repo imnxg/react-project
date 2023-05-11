@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Table, Space, Button,Input } from '@arco-design/web-react';
+import { IconPlus, IconDelete,IconSearch } from '@arco-design/web-react/icon';
+
 const columns = [
   {
     title: '部门名称',
@@ -51,16 +53,25 @@ const columns = [
     title: '操作',
     dataIndex: 'operate',
     // sorter: (a, b) => a.email.length - b.email.length,
+    render: (_, record) => (
+      <Button
+        // onClick={() => removeRow(record.key)}
+        type='primary'
+        status='danger'
+      >
+        Delete
+      </Button>
+    )
   },
 ];
 const allData = Array(200)
   .fill('')
   .map((_, index) => ({
     key: `${index}`,
-    name: `Kevin Sandra ${index}`,
-    salary: 22000,
-    address: `${index} Park Road, London`,
-    email: `kevin.sandra_${index}@example.com`,
+    departmentName: `Kevin Sandra ${index}`,
+    departmentCode: 22000,
+    updateTime: `${index} Park Road, London`,
+    modifyPerson: `kevin.sandra_${index}@example.com`,
   }));
 
 function CommodityManagement() {
@@ -89,7 +100,12 @@ function CommodityManagement() {
   return (
     <div>
       {/* TODO: 加一个搜索框 */}
-      <div class="header">搜索框：<Input style={{ width: 120 }} allowClear placeholder='输入部门名称'/> 输入部门代码：<Input style={{ width: 120 }} allowClear placeholder='输入部门代码' /></div>
+      <div class="header">
+        搜索框：<Input style={{ width: 120 }} allowClear placeholder='输入部门名称'/> 
+      输入部门代码：<Input style={{ width: 120 }} allowClear placeholder='输入部门代码' />
+      <Button type='primary' icon={<IconSearch />}>搜索</Button>
+      <Button type='primary' icon={<IconPlus />} >添加</Button>
+      </div>
       <Table
         loading={loading}
         columns={columns}
