@@ -65,7 +65,7 @@ class Home extends React.Component {
                 </span>
               }
             >
-              <MenuItem key='1_1' itemname="商品管理">商品管理</MenuItem>
+              <MenuItem key='1_1' itemname="商品管理"><Link to="commodityManagement">商品管理</Link></MenuItem>
             </SubMenu>
             <SubMenu
               key='2'
@@ -76,7 +76,7 @@ class Home extends React.Component {
                 </span>
               }
             >
-              <MenuItem key='2_1' itemname="交易订单" ><Link to="CommodityManagementChange">交易订单</Link></MenuItem>
+              <MenuItem key='2_1' itemname="交易订单" ><Link to="tradeOrder">交易订单</Link></MenuItem>
             </SubMenu>
 
             <SubMenu
