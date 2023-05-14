@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 // import ReactDOM from 'react-dom/client';
-import './css/login.css';
+import '../css/login.css';
 import { BrowserRouter as Router, Routes, Route,useNavigate } from "react-router-dom";
 import { Layout, Menu, Breadcrumb, Button, Message,Input } from '@arco-design/web-react';
 import { IconHome, IconCalendar, IconCaretRight, IconCaretLeft } from '@arco-design/web-react/icon';
