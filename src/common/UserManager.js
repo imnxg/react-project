@@ -1,105 +1,113 @@
 import { useState, useEffect } from 'react';
-import { Table, Space, Button,Input,} from '@arco-design/web-react';
+import { Table, Space, Button,Input,Switch } from '@arco-design/web-react';
 import { IconPlus, IconDelete,IconSearch } from '@arco-design/web-react/icon';
-import SelectDemo from './SelectDemo';
 
 const columns = [
   {
-    title: '终端编号',
-    dataIndex: 'departmentName',
-    sorter: (a, b) => a.departmentName.length - b.departmentName.length,
+    title: '公司',
+    dataIndex: 'companyName',
+    sorter: (a, b) => a.companyName.length - b.companyName.length,
   },
   {
-    title: '订单号',
-    dataIndex: 'departmentCode',
-    sorter: (a, b) => a.departmentCode - b.departmentCode,
-    filters: [
-      {
-        text: '> 20000',
-        value: '20000',
-      },
-      {
-        text: '> 30000',
-        value: '30000',
-      },
-    ],
-    defaultFilters: ['20000'],
-    onFilter: (value, row) => row.departmentCode > value,
-    sortDirections: ['ascend'],
-    defaultSortOrder: 'ascend',
+    title: '用户名',
+    dataIndex: 'userName',
+    sorter: (a, b) => a.userName.length - b.userName.length,
+    
   },
   {
-    title: '交易单号',
+    title: '姓名',
+    dataIndex: 'name',
+    sorter: (a, b) => a.name.length - b.name.length,
+  },
+  {
+    title: '手机号',
+    dataIndex: 'phone',
+    sorter: (a, b) => a.phone.length - b.phone.length,
+  },
+  {
+    title: '性别',
+    dataIndex: 'gender',
+    sorter: (a, b) => a.gender.length - b.gender.length,
+  },
+  {
+    title: '邮件',
+    dataIndex: 'email',
+    sorter: (a, b) => a.email - b.email,
+    // filters: [
+    //   {
+    //     text: '> 20000',
+    //     value: '20000',
+    //   },
+    //   {
+    //     text: '> 30000',
+    //     value: '30000',
+    //   },
+    // ],
+  },
+  {
+    title: '修改时间',
     dataIndex: 'updateTime',
-    sorter: (a, b) => a.updateTime - b.updateTime,
-    filters: [
-      {
-        text: 'London',
-        value: 'London',
-      },
-      {
-        text: 'Paris',
-        value: 'Paris',
-      },
-    ],
-    onFilter: (value, row) => row.updateTime.indexOf(value) > -1,
-    filterMultiple: false,
+    sorter: (a, b) => a.updateTime.length - b.updateTime.length,
   },
   {
-    title: '支付方式',
-    dataIndex: 'payType',
-    sorter: (a, b) => a.payType.length - b.payType.length,
-  },
-  {
-    title: '交易类型',
-    dataIndex: 'tradeType',
-    sorter: (a, b) => a.tradeType.length - b.tradeType.length,
-  },
-  {
-    title: '商品价格',
-    dataIndex: 'commodityPrice',
-    sorter: (a, b) => a.commodityPrice.length - b.commodityPrice.length,
-  },
-  {
-    title: '支付金额',
-    dataIndex: 'payPrice',
-    sorter: (a, b) => a.payPrice.length - b.payPrice.length,
-  },
-  {
-    title: '商品名称',
-    dataIndex: 'commodityName',
-    sorter: (a, b) => a.commodityName.length - b.commodityName.length,
-  },
-  {
-    title: '订单状态',
-    dataIndex: 'orderStatus',
-    sorter: (a, b) => a.orderStatus.length - b.orderStatus.length,
-  },
-  {
-    title: '创建时间',
-    dataIndex: 'createTime',
-    sorter: (a, b) => a.createTime.length - b.createTime.length,
+    title: '状态',
+    dataIndex: 'status',
+    // sorter: (a, b) => a.status.length - b.status.length,
+    render: (_, record) => (
+      <div>
+        <Switch />
+      </div>
+    )
   },
   {
     title: '操作',
     dataIndex: 'operate',
     // sorter: (a, b) => a.email.length - b.email.length,
     render: (_, record) => (
-        <div>
-    <Button
+      <div>
+        <Button
         // onClick={() => removeRow(record.key)}
         type='text'
         status='default'
-      >预览</Button>
+      >
+        编辑
+      </Button>
       <Button
         // onClick={() => removeRow(record.key)}
         type='primary'
         status='danger'
       >
-        退款
+        删除
+      </Button>
+      <Button
+        // onClick={() => removeRow(record.key)}
+        type='text'
+        status='default'
+      >
+        重置密码
+      </Button>
+      <Button
+        // onClick={() => removeRow(record.key)}
+        type='text'
+        status='default'
+      >
+        数据权限
+      </Button>
+      <Button
+        // onClick={() => removeRow(record.key)}
+        type='text'
+        status='default'
+      >
+        下线
+      </Button>
+      <Button
+        // onClick={() => removeRow(record.key)}
+        type='text'
+        status='default'
+      >
+        刷新缓存
       </Button>
         </div>
-       
     )
   },
 ];
@@ -107,13 +115,13 @@ const allData = Array(200)
   .fill('')
   .map((_, index) => ({
     key: `${index}`,
-    departmentName: `Kevin Sandra ${index}`,
-    departmentCode: 22000,
-    updateTime: `${index} Park Road, London`,
-    modifyPerson: `kevin.sandra_${index}@example.com`,
+    companyName: `Kevin Sandra ${index}`,
+    userName: `张三_${index}`,
+    // updateTime: `${index} `,
+    email: `kevin.sandra_${index}@example.com`,
   }));
 
-function TradeOrder() {
+function UserManager() {
   const [data, setData] = useState(allData);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [pagination, setPagination] = useState({
@@ -141,9 +149,10 @@ function TradeOrder() {
       {/* TODO: 加一个搜索框 */}
       <div class="header">
         搜索框：<Input style={{ width: 120 }} allowClear placeholder='输入部门名称'/> 
-      <Input style={{ width: 120 }} allowClear placeholder='输入订单号' />
-        <SelectDemo />
+      输入部门代码：<Input style={{ width: 120 }} allowClear placeholder='输入部门代码' />
       <Button type='primary' icon={<IconSearch />}>搜索</Button>
+      <Button type='primary' icon={<IconPlus />} >添加</Button>
+      <Button type='primary' >部门设置</Button>
       </div>
       <Table
         loading={loading}
@@ -168,11 +177,11 @@ function TradeOrder() {
             }}
           >
             {paginationNode}
-            <Space>
+            {/* <Space>
               <span>Selected {selectedRowKeys.length}</span>
               <Button size='mini'>Save</Button>
               <Button size='mini'>Delete</Button>
-            </Space>
+            </Space> */}
 
           </div>
         )}
@@ -182,4 +191,4 @@ function TradeOrder() {
   );
 }
 
-export default TradeOrder;
+export default UserManager;

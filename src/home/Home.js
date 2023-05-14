@@ -65,7 +65,7 @@ class Home extends React.Component {
                 </span>
               }
             >
-              <MenuItem key='1_1' itemname="商品管理"><Link to="commodityManagement">商品管理</Link></MenuItem>
+              <MenuItem key='1_1'><Link to="commodityManagement">商品管理</Link></MenuItem>
             </SubMenu>
             <SubMenu
               key='2'
@@ -76,7 +76,7 @@ class Home extends React.Component {
                 </span>
               }
             >
-              <MenuItem key='2_1' itemname="交易订单" ><Link to="tradeOrder">交易订单</Link></MenuItem>
+              <MenuItem key='2_1'><Link to="tradeOrder">交易订单</Link></MenuItem>
             </SubMenu>
 
             <SubMenu
@@ -88,8 +88,8 @@ class Home extends React.Component {
                 </span>
               }
             >
-              <MenuItem key='3_1' itemname="用户管理"><Link to={this.state.itemLink}>用户管理</Link></MenuItem>   
-              <MenuItem key='3_2' itemname="菜单管理">菜单管理</MenuItem>   
+              <MenuItem key='3_1'><Link to="userManager">用户管理</Link></MenuItem>   
+              <MenuItem key='3_2'>菜单管理</MenuItem>   
               <MenuItem key='3_3'>角色管理</MenuItem>    
               <MenuItem key='3_4'>公司管理</MenuItem>    
               <MenuItem key='3_5'>系统环境变量</MenuItem>    

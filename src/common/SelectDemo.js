@@ -30,8 +30,7 @@ const SelectDemo = () => {
         ))}
       </Select>
     </Space>
-    <br/>
-    <br/>
+
     {/* <Space size='large'>
       <Select
         status='error'

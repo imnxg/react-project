@@ -5,8 +5,9 @@ import WebTest from './WebTest';
 import Login from './Login';
 import Home from "./home/Home";
 import CommodityManagement from "./common/CommodityManagement";
-import CommodityManagementChange from "./common/CommodityManageChange"
+import CommodityManagementChange from "./common/CommodityManageChange";
 import TradeOrder from './common/TradeOrder';
+import UserManager from './common/UserManager';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "@arco-design/web-react/dist/css/arco.css";
 import reportWebVitals from './reportWebVitals';
@@ -22,6 +23,7 @@ function App() {
                 <Route path='commodityManagement' element={<CommodityManagement />} />
                 <Route path='commodityManagementChange' element={<CommodityManagementChange/>}/>
                 <Route path='tradeOrder' element={<TradeOrder/>}/>
+                <Route path='userManager' element={<UserManager/>}/>
           </Route>
         </Routes>
       </Router>
