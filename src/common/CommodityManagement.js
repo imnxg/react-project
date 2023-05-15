@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef,forwardRef } from 'react';
 import { Table, Space, Button,Input } from '@arco-design/web-react';
-import { IconPlus, IconDelete,IconSearch } from '@arco-design/web-react/icon';
+import { IconPlus,IconSearch } from '@arco-design/web-react/icon';
+import AllData from '../mock/commodity.ts';
 
 const columns = [
   {
@@ -54,6 +55,15 @@ const columns = [
     dataIndex: 'operate',
     // sorter: (a, b) => a.email.length - b.email.length,
     render: (_, record) => (
+      <div>
+        <Button
+        style={{marginRight: "10px"}}
+        // onClick={() => removeRow(record.key)}
+        type='default'
+        status='defult'
+      >
+        编辑
+      </Button>
       <Button
         // onClick={() => removeRow(record.key)}
         type='primary'
@@ -61,26 +71,30 @@ const columns = [
       >
         Delete
       </Button>
+      </div>
     )
   },
 ];
-const allData = Array(200)
-  .fill('')
-  .map((_, index) => ({
-    key: `${index}`,
-    departmentName: `Kevin Sandra ${index}`,
-    departmentCode: 22000,
-    updateTime: `${index} Park Road, London`,
-    modifyPerson: `kevin.sandra_${index}@example.com`,
-  }));
+// const allData = Array(200)
+//   .fill('')
+//   .map((_, index) => ({
+//     key: `${index}`,
+//     departmentName: `Kevin Sandra ${index}`,
+//     departmentCode: 22000,
+//     updateTime: `${index} Park Road, London`,
+//     modifyPerson: `kevin.sandra_${index}@example.com`,
+//   }));
+const allData = AllData;
 
-function CommodityManagement() {
+const CommodityManagement = forwardRef(
+function CommodityManagement(props, ref) {
+
   const [data, setData] = useState(allData);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [pagination, setPagination] = useState({
     sizeCanChange: true,
     showTotal: true,
-    total: 96,
+    total: allData.length,
     pageSize: 10,
     current: 1,
     pageSizeChangeResetCurrent: true,
@@ -98,13 +112,13 @@ function CommodityManagement() {
   }
 
   return (
-    <div>
+    <div ref={ref}>
       {/* TODO: 加一个搜索框 */}
-      <div class="header">
-        搜索框：<Input style={{ width: 120 }} allowClear placeholder='输入部门名称'/> 
-      输入部门代码：<Input style={{ width: 120 }} allowClear placeholder='输入部门代码' />
-      <Button type='primary' icon={<IconSearch />}>搜索</Button>
-      <Button type='primary' icon={<IconPlus />} >添加</Button>
+      <div className="header" style={{marginBottom:"15px"}}>
+        搜索框：<Input style={{ width: 130 ,marginRight: "10px"}} allowClear placeholder='输入部门名称'/> 
+      输入部门代码：<Input style={{ width: 130 ,marginRight: "10px"}} allowClear placeholder='输入部门代码' />
+      <Button type='primary' style={{ marginRight: "10px" }}  icon={<IconSearch />}>搜索</Button>
+      <Button type='primary' style={{ marginRight: "10px" }} icon={<IconPlus />} >添加</Button>
       </div>
       <Table
         loading={loading}
@@ -129,11 +143,11 @@ function CommodityManagement() {
             }}
           >
             {paginationNode}
-            <Space>
+            {/* <Space>
               <span>Selected {selectedRowKeys.length}</span>
               <Button size='mini'>Save</Button>
               <Button size='mini'>Delete</Button>
-            </Space>
+            </Space> */}
 
           </div>
         )}
@@ -141,6 +155,6 @@ function CommodityManagement() {
     </div>
 
   );
-}
+})
 
 export default CommodityManagement;

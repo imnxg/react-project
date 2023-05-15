@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useRef} from 'react';
 import { Table, Space, Button,Input,} from '@arco-design/web-react';
 import { IconPlus, IconDelete,IconSearch } from '@arco-design/web-react/icon';
 import SelectDemo from './SelectDemo';
@@ -114,6 +114,8 @@ const allData = Array(200)
   }));
 
 function TradeOrder() {
+  const myRef  = useRef(null);
+
   const [data, setData] = useState(allData);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [pagination, setPagination] = useState({
@@ -137,14 +139,12 @@ function TradeOrder() {
   }
 
   return (
-    <div>
+    <div ref={myRef}>
       {/* TODO: 加一个搜索框 */}
-      <div class="header">
-        搜索框：<Input style={{ width: 120 }} allowClear placeholder='输入部门名称'/> 
-      <Input style={{ width: 120 }} allowClear placeholder='输入订单号' />
-        <SelectDemo />
-      <Button type='primary' icon={<IconSearch />}>搜索</Button>
+      <div className="header" style={{marginBottom:"15px"}}>
+      <SelectDemo />
       </div>
+      
       <Table
         loading={loading}
         columns={columns}

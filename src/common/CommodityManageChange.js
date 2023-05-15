@@ -130,6 +130,7 @@ function EditableCell(props) {
 
 function CommodityManageChange() {
   const [count, setCount] = useState(5);
+  
   const [data, setData] = useState([
     {
       key: '1',
@@ -161,6 +162,75 @@ function CommodityManageChange() {
     },
     {
       key: '5',
+      name: 'William Smith',
+      salary: 27000,
+      address: '62 Park Road, London',
+      email: 'william.smith@example.com'
+    },
+    {
+      key: '6',
+      name: 'Jane Doe',
+      salary: 23000,
+      address: '32 Park Road, London',
+      email: 'jane.doe@example.com'
+    },
+    {
+      key: '7',
+      name: 'Alisa Ross',
+      salary: 25000,
+      address: '35 Park Road, London',
+      email: 'alisa.ross@example.com'
+    },
+    {
+      key: '8',
+      name: 'Kevin Sandra',
+      salary: 22000,
+      address: '31 Park Road, London',
+      email: 'kevin.sandra@example.com'
+    },
+    {
+      key: '9',
+      name: 'Ed Hellen',
+      salary: 17000,
+      address: '42 Park Road, London',
+      email: 'ed.hellen@example.com'
+    },
+    {
+      key: '10',
+      name: 'William Smith',
+      salary: 27000,
+      address: '62 Park Road, London',
+      email: 'william.smith@example.com'
+    },{
+      key: '11',
+      name: 'Jane Doe',
+      salary: 23000,
+      address: '32 Park Road, London',
+      email: 'jane.doe@example.com'
+    },
+    {
+      key: '12',
+      name: 'Alisa Ross',
+      salary: 25000,
+      address: '35 Park Road, London',
+      email: 'alisa.ross@example.com'
+    },
+    {
+      key: '13',
+      name: 'Kevin Sandra',
+      salary: 22000,
+      address: '31 Park Road, London',
+      email: 'kevin.sandra@example.com'
+    },
+    {
+      key: '14',
+      name: 'Ed Hellen',
+      salary: 17000,
+      address: '42 Park Road, London',
+      email: 'ed.hellen@example.com'
+    },
+    {
+      key: '15',
       name: 'William Smith',
       salary: 27000,
       address: '62 Park Road, London',
@@ -200,7 +270,14 @@ function CommodityManageChange() {
       )
     }
   ];
-
+  const [pagination, setPagination] = useState({
+    sizeCanChange: true,
+    showTotal: true,
+    total: data.length,
+    pageSize: 10,
+    current: 1,
+    pageSizeChangeResetCurrent: true,
+  });
   function handleSave(row) {
     const newData = [...data];
     const index = newData.findIndex(item => row.key === item.key);
@@ -238,6 +315,8 @@ function CommodityManageChange() {
       </Button>
       <Table
         data={data}
+        pagination={pagination}
+        pagePosition='bl'
         components={{
           body: {
             row: EditableRow,

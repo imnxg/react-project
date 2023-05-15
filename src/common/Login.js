@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useRef} from 'react';
 // import ReactDOM from 'react-dom/client';
 import '../css/login.css';
 import { BrowserRouter as Router, Routes, Route,useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ import { IconHome, IconCalendar, IconCaretRight, IconCaretLeft } from '@arco-des
 // import reportWebVitals from './reportWebVitals';
 
 function Login() {
+  const myRef  = useRef(null);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -45,7 +46,7 @@ function Login() {
     };
 
   return (
-    <div className="loginContainer">
+    <div className="loginContainer" ref={myRef}>
       <div className="loginCanvas">
         <div className="userTitle">用户登录</div>
 

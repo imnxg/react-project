@@ -1,9 +1,9 @@
-import React from 'react';
+import React,{useState,useEffect, useRef} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import WebTest from './WebTest';
+// import WebTest from './WebTest';
 import Login from './common/Login';
-import Home from "./home/Home";
+import Home from './home/Home';
 import CommodityManagement from "./common/CommodityManagement";
 import CommodityManagementChange from "./common/CommodityManageChange";
 import TradeOrder from './common/TradeOrder';
@@ -13,9 +13,12 @@ import "@arco-design/web-react/dist/css/arco.css";
 
 import reportWebVitals from './reportWebVitals';
 
+
 function App() {
+  const myRef  = useRef(null);
+  
   return (
-    <div class="backgeoundText">
+    <div className="backgeoundText" ref={myRef}>
       <Router>
         <Routes>
           <Route exact path="/" element={<Login />} />
@@ -29,8 +32,6 @@ function App() {
         </Routes>
       </Router>
     </div>
-
-
   );
 }
 
@@ -41,6 +42,5 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
 
 reportWebVitals();

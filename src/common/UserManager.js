@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useRef } from 'react';
 import { Table, Space, Button,Input,Switch } from '@arco-design/web-react';
 import { IconPlus, IconDelete,IconSearch } from '@arco-design/web-react/icon';
 
@@ -122,6 +122,8 @@ const allData = Array(200)
   }));
 
 function UserManager() {
+  const myRef  = useRef(null);
+
   const [data, setData] = useState(allData);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [pagination, setPagination] = useState({
@@ -145,14 +147,14 @@ function UserManager() {
   }
 
   return (
-    <div>
+    <div ref={myRef}>
       {/* TODO: 加一个搜索框 */}
-      <div class="header">
-        搜索框：<Input style={{ width: 120 }} allowClear placeholder='输入部门名称'/> 
-      输入部门代码：<Input style={{ width: 120 }} allowClear placeholder='输入部门代码' />
-      <Button type='primary' icon={<IconSearch />}>搜索</Button>
-      <Button type='primary' icon={<IconPlus />} >添加</Button>
-      <Button type='primary' >部门设置</Button>
+      <div className="header" style={{marginBottom:"15px"}}>
+        搜索框：<Input style={{ width: 130 ,marginRight: "10px"}} allowClear placeholder='输入部门名称'/> 
+      输入部门代码：<Input style={{ width: 130 ,marginRight: "10px"}} allowClear placeholder='输入部门代码' />
+      <Button type='primary' style={{ marginRight: "10px"}} icon={<IconSearch />}>搜索</Button>
+      <Button type='primary' style={{marginRight: "10px"}} icon={<IconPlus />} >添加</Button>
+      <Button type='primary' style={{marginRight: "10px"}} >部门设置</Button>
       </div>
       <Table
         loading={loading}

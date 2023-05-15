@@ -1,4 +1,5 @@
-import { Select, Message, Space } from '@arco-design/web-react';
+import { Select, Message, Space,Button,Input } from '@arco-design/web-react';
+import { IconPlus, IconDelete,IconSearch } from '@arco-design/web-react/icon';
 const Option = Select.Option;
 const options = ['Beijing', 'Shanghai', 'Guangzhou', 'Disabled'];
 
@@ -6,6 +7,9 @@ const SelectDemo = () => {
   return (
     <div>
     <Space size='large'>
+  
+        搜索框：<Input style={{ width: 120 }} allowClear placeholder='输入部门名称'/> 
+      <Input style={{ width: 120 }} allowClear placeholder='输入订单号' />
       <Select
         placeholder='请选择'
         style={{ width: 154 }}
@@ -29,6 +33,7 @@ const SelectDemo = () => {
           </Option>
         ))}
       </Select>
+      <Button type='primary' icon={<IconSearch />}>搜索</Button>
     </Space>
 
     {/* <Space size='large'>
