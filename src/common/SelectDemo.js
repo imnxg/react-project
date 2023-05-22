@@ -3,16 +3,17 @@ import { IconPlus, IconDelete,IconSearch } from '@arco-design/web-react/icon';
 const Option = Select.Option;
 const options = ['Beijing', 'Shanghai', 'Guangzhou', 'Disabled'];
 
+
 const SelectDemo = () => {
   return (
     <div>
     <Space size='large'>
   
-        搜索框：<Input style={{ width: 120 }} allowClear placeholder='输入部门名称'/> 
-      <Input style={{ width: 120 }} allowClear placeholder='输入订单号' />
+        <center style={{marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门名称'/> 
+      <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入订单号' />
       <Select
         placeholder='请选择'
-        style={{ width: 154 }}
+        style={{ width: 154, marginRight: 0, marginBottom: 10 }}
         onChange={(value) =>
           Message.info({
             content: `You select ${value}.`,
@@ -26,14 +27,14 @@ const SelectDemo = () => {
           </Option>
         ))}
       </Select>
-      <Select placeholder='请选择' style={{ width: 154 }} defaultValue='Beijing'>
+      <Select placeholder='请选择' style={{ width: 154, marginRight: 0, marginBottom: 10 }} defaultValue='Beijing'>
         {options.map((option, index) => (
           <Option key={option} disabled={index === 4} value={option}>
             {option}
           </Option>
         ))}
       </Select>
-      <Button type='primary' icon={<IconSearch />}>搜索</Button>
+      <Button type='primary' style={{ marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>
     </Space>
 
     {/* <Space size='large'>

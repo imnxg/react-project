@@ -1,7 +1,6 @@
-import { useState, useEffect,useRef} from 'react';
-import { Table, Space, Button,Input,} from '@arco-design/web-react';
-import { IconPlus, IconDelete,IconSearch } from '@arco-design/web-react/icon';
-import SelectDemo from './SelectDemo';
+import { useState, useEffect, useRef } from 'react';
+import { Table, Space, Button, Input,Select,Message } from '@arco-design/web-react';
+import { IconPlus, IconDelete, IconSearch } from '@arco-design/web-react/icon';
 
 const columns = [
   {
@@ -85,21 +84,21 @@ const columns = [
     dataIndex: 'operate',
     // sorter: (a, b) => a.email.length - b.email.length,
     render: (_, record) => (
-        <div>
-    <Button
-        // onClick={() => removeRow(record.key)}
-        type='text'
-        status='default'
-      >预览</Button>
-      <Button
-        // onClick={() => removeRow(record.key)}
-        type='primary'
-        status='danger'
-      >
-        退款
-      </Button>
-        </div>
-       
+      <div>
+        <Button
+          // onClick={() => removeRow(record.key)}
+          type='text'
+          status='default'
+        >预览</Button>
+        <Button
+          // onClick={() => removeRow(record.key)}
+          type='primary'
+          status='danger'
+        >
+          退款
+        </Button>
+      </div>
+
     )
   },
 ];
@@ -114,7 +113,7 @@ const allData = Array(200)
   }));
 
 function TradeOrder() {
-  const myRef  = useRef(null);
+  const myRef = useRef(null);
 
   const [data, setData] = useState(allData);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -138,13 +137,41 @@ function TradeOrder() {
     }, 1000);
   }
 
+  const Option = Select.Option;
+  const options = ['Beijing', 'Shanghai', 'Guangzhou', 'Disabled'];
+
   return (
     <div ref={myRef}>
-      {/* TODO: 加一个搜索框 */}
-      <div className="header" style={{marginBottom:"15px"}}>
-      <SelectDemo />
-      </div>
-      
+      <Space size='large'>
+
+        <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门名称' />
+        <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入订单号' />
+        <Select
+          placeholder='请选择'
+          style={{ width: 154, marginRight: 0, marginBottom: 10 }}
+          onChange={(value) =>
+            Message.info({
+              content: `You select ${value}.`,
+              showIcon: true,
+            })
+          }
+        >
+          {options.map((option, index) => (
+            <Option key={option} disabled={index === 3} value={option}>
+              {option}
+            </Option>
+          ))}
+        </Select>
+        <Select placeholder='请选择' style={{ width: 154, marginRight: 0, marginBottom: 10 }} defaultValue='Beijing'>
+          {options.map((option, index) => (
+            <Option key={option} disabled={index === 4} value={option}>
+              {option}
+            </Option>
+          ))}
+        </Select>
+        <Button type='primary' style={{ marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>
+      </Space>
+
       <Table
         loading={loading}
         columns={columns}

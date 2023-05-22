@@ -36,7 +36,7 @@
 
 
 
-问题1：
+### 问题1：
 
 ```
 bundle.js:47133 Warning: findDOMNode is deprecated in StrictMode. findDOMNode was passed an instance of ResizeObserverComponent which is inside StrictMode. Instead, add a ref directly to the element you want to reference. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-find-node
@@ -71,7 +71,7 @@ function MyComponent() {
 
 请注意，`ref` 属性的值应该是一个回调函数或 `useRef` 的返回值。在这个例子中，我们使用了 `useRef` 来创建一个可变的引用，然后将其传递给 `div` 元素的 `ref` 属性。
 
-问题2：分页点击问题
+### 问题2：分页点击问题
 
 ```
 ResizeObserver loop limit exceeded
@@ -111,3 +111,43 @@ observer.observe(element);
 ```
 
 In this example, the `debounce` function limits the number of times the `handleResize` function is called to once every 100 milliseconds. This can help prevent the observer from triggering a loop that exceeds the maximum number of loops allowed by the browser.
+
+
+
+
+
+### 问题3： 触发次数
+
+遇到的问题
+
+![image-20230522161458096](./assets/image-20230522161458096.png)
+
+```
+Uncaught runtime errors:
+×
+ERROR
+ResizeObserver loop limit exceeded
+at http://localhost:3000/static/js/bundle.js:107564:58
+```
+
+解决办法：
+
+这个错误通常是因为`ResizeObserver`被触发了过多的次数，导致了循环次数超过了浏览器的限制。可以尝试优化代码，减少`ResizeObserver`的触发次数。
+
+另外，如果你使用的是React，你可能会遇到这个问题。这是因为React在StrictMode下会对代码进行更严格的检查，包括检查是否有过时的方法被使用。在React的StrictMode下使用了过时的方法`findDOMNode`可能会导致这个错误。建议使用ref属性来获取DOM节点，而不是使用`findDOMNode`方法。以下是一个简单的案例，演示如何使用ref来获取DOM节点：
+
+```jsx
+import React, { useRef } from 'react';
+
+function MyComponent() {
+  const myRef = useRef(null);
+
+  return (
+    <div ref={myRef}>
+      {/* your content here */}
+    </div>
+  );
+}
+```
+
+在这个例子中，我们使用了`useRef`来创建一个ref，然后将这个ref传递给`<div>`元素的`ref`属性。这样，`myRef.current`就指向了这个`<div>`元素的DOM节点，你可以在需要的时候使用它。

@@ -121,7 +121,7 @@ const allData = Array(200)
     email: `kevin.sandra_${index}@example.com`,
   }));
 
-function UserManager() {
+function UserManagement() {
   const myRef  = useRef(null);
 
   const [data, setData] = useState(allData);
@@ -148,14 +148,13 @@ function UserManager() {
 
   return (
     <div ref={myRef}>
-      {/* TODO: 加一个搜索框 */}
-      <div className="header" style={{marginBottom:"15px"}}>
-        搜索框：<Input style={{ width: 130 ,marginRight: "10px"}} allowClear placeholder='输入部门名称'/> 
-      输入部门代码：<Input style={{ width: 130 ,marginRight: "10px"}} allowClear placeholder='输入部门代码' />
-      <Button type='primary' style={{ marginRight: "10px"}} icon={<IconSearch />}>搜索</Button>
-      <Button type='primary' style={{marginRight: "10px"}} icon={<IconPlus />} >添加</Button>
-      <Button type='primary' style={{marginRight: "10px"}} >部门设置</Button>
-      </div>
+      <Space size="large">
+      <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130 ,marginRight: "10px",marginBottom: 10 }} allowClear placeholder='输入部门名称'/> 
+      <Input style={{ width: 130 ,marginRight: "10px",marginBottom: 10 }} allowClear placeholder='输入部门代码' />
+      <Button type='primary' style={{ marginRight: "10px",marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>
+      <Button type='primary' style={{marginRight: "10px",marginBottom: 10 }} icon={<IconPlus />} >添加</Button>
+      <Button type='primary' style={{marginRight: "10px",marginBottom: 10 }} >部门设置</Button>
+      </Space>
       <Table
         loading={loading}
         columns={columns}
@@ -193,4 +192,4 @@ function UserManager() {
   );
 }
 
-export default UserManager;
+export default UserManagement;

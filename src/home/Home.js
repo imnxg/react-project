@@ -1,7 +1,5 @@
 import React,{useState,forwardRef} from 'react';
 import ReactDOM from 'react-dom/client';
-// import CommodityManagement from "../common/CommodityManagement";
-// import CommodityManagementChange from "../common/CommodityManageChange"
 import { Layout, Menu, Breadcrumb, Button, Message } from '@arco-design/web-react';
 import { IconHome, IconCalendar, IconCaretRight, IconCaretLeft } from '@arco-design/web-react/icon';
 import { Link, Route, Routes,Outlet} from 'react-router-dom';
@@ -87,9 +85,9 @@ function Home(props,ref){
               </span>
             }
           >
-            <MenuItem key='3_1'><Link to="userManager">用户管理</Link></MenuItem>   
-            <MenuItem key='3_2'><Link to="commodityManagementChange">菜单管理</Link></MenuItem>   
-            <MenuItem key='3_3'>角色管理</MenuItem>    
+            <MenuItem key='3_1'><Link to="userManagement">用户管理</Link></MenuItem>   
+            <MenuItem key='3_2'><Link to="menuManagement">菜单管理</Link></MenuItem>   
+            <MenuItem key='3_3'><Link to="roleManagement">角色管理</Link></MenuItem>    
             <MenuItem key='3_4'>公司管理</MenuItem>    
             <MenuItem key='3_5'>系统环境变量</MenuItem>    
             <MenuItem key='3_6'>权限管理</MenuItem>    

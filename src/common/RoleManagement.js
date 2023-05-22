@@ -5,7 +5,8 @@ import React, {
   useContext,
   useCallback
 } from 'react';
-import { Button, Table, Input, Select, Form } from '@arco-design/web-react';
+import { Button, Table, Input, Select, Form, Space, SpaceProps } from '@arco-design/web-react';
+import { IconPlus, IconDelete, IconSearch } from '@arco-design/web-react/icon';
 const FormItem = Form.Item;
 const EditableContext = React.createContext({});
 
@@ -127,10 +128,13 @@ function EditableCell(props) {
     </div>
   );
 }
-
-function CommodityManageChange() {
+/**
+ * 
+ * @returns 角色管理
+ */
+function RoleManagement() {
   const [count, setCount] = useState(5);
-  
+
   const [data, setData] = useState([
     {
       key: '1',
@@ -201,7 +205,7 @@ function CommodityManageChange() {
       salary: 27000,
       address: '62 Park Road, London',
       email: 'william.smith@example.com'
-    },{
+    }, {
       key: '11',
       name: 'Jane Doe',
       salary: 23000,
@@ -304,15 +308,14 @@ function CommodityManageChange() {
 
   return (
     <>
-      <Button
-        style={{
-          marginBottom: 10
-        }}
-        type='primary'
-        onClick={addRow}
-      >
-        Add
-      </Button>
+      <Space size='large'>
+        <center style={{ width: 60, marginRight: -20, marginBottom: 10 }}>搜索：</center>
+        <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入角色名称' />
+        <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入角色代码' />
+        <Button type='primary' style={{ marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>
+        <Button type='primary' style={{ marginBottom: 10 }} icon={<IconPlus />} >添加</Button>
+      </Space>
+
       <Table
         data={data}
         pagination={pagination}
@@ -326,11 +329,11 @@ function CommodityManageChange() {
         columns={columns.map(column =>
           column.editable
             ? {
-                ...column,
-                onCell: () => ({
-                  onHandleSave: handleSave
-                })
-              }
+              ...column,
+              onCell: () => ({
+                onHandleSave: handleSave
+              })
+            }
             : column
         )}
         className='table-demo-editable-cell'
@@ -339,5 +342,4 @@ function CommodityManageChange() {
   );
 }
 
-// export default EditableTable;
-export default CommodityManageChange;
+export default RoleManagement;
