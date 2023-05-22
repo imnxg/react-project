@@ -151,3 +151,75 @@ function MyComponent() {
 ```
 
 在这个例子中，我们使用了`useRef`来创建一个ref，然后将这个ref传递给`<div>`元素的`ref`属性。这样，`myRef.current`就指向了这个`<div>`元素的DOM节点，你可以在需要的时候使用它。
+
+
+
+### 问题4 变量问题
+
+背景
+
+菜单栏收缩处，点击收缩按钮菜单栏自动隐藏（收缩）
+
+遇到的问题
+
+```
+Uncaught runtime errors:
+×
+ERROR
+Assignment to constant variable.
+TypeError: Assignment to constant variable.
+    at handleCollapsed (http://localhost:3000/main.c31a36a940826dc1f721.hot-update.js:53:18)
+    at handleClick (http://localhost:3000/static/js/bundle.js:3253:16)
+    at HTMLUnknownElement.callCallback (http://localhost:3000/static/js/bundle.js:51148:18)
+    at Object.invokeGuardedCallbackDev (http://localhost:3000/static/js/bundle.js:51192:20)
+    at invokeGuardedCallback (http://localhost:3000/static/js/bundle.js:51249:35)
+    at invokeGuardedCallbackAndCatchFirstError (http://localhost:3000/static/js/bundle.js:51263:29)
+    at executeDispatch (http://localhost:3000/static/js/bundle.js:55407:7)
+    at processDispatchQueueItemsInOrder (http://localhost:3000/static/js/bundle.js:55433:11)
+    at processDispatchQueue (http://localhost:3000/static/js/bundle.js:55444:9)
+    at dispatchEventsForPlugins (http://localhost:3000/static/js/bundle.js:55453:7)
+```
+
+![image-20230522181846792](./assets/image-20230522181846792.png)
+
+原因：
+
+在使用
+
+```
+const [collapsed,setCollapsed] = useState(false)
+```
+
+对其赋值了
+
+```
+  const handleCollapsed = () => {
+    setCollapsed = !collapsed;
+  };
+```
+
+这个错误是因为你尝试在一个常量变量上进行赋值操作，而常量变量的值是不能被修改的。你需要将这个常量变量改为一个普通的变量，或者使用其他方法来达到你的目的。
+
+
+
+如果你想要修改`collapsed`的值，你需要将`const`关键字改为`let`或`var`，这样就可以对`collapsed`进行赋值操作了。例如：
+
+```
+let [collapsed, setCollapsed] = useState(false);
+collapsed = true; // 可以对collapsed进行赋值操作
+```
+
+不过需要注意的是，这样做可能会导致一些副作用，因为`useState`是React提供的一个钩子函数，它会在组件渲染时被调用，如果你在组件渲染后对`collapsed`进行了赋值操作，可能会导致组件状态不一致，因此建议尽量避免这种写法。
+
+解决办法：
+
+ 如果你不想改变`collapsed`变量的定义方式，可以使用`setCollapsed`函数来更新`collapsed`的值，例如：
+
+```
+const [collapsed, setCollapsed] = useState(false);
+ const handleCollapsed = () => {
+    setCollapsed = !collapsed;// 通过setCollapsed函数来更新collapsed的值
+  };
+```
+
+这种方式可以避免直接对常量变量进行赋值操作，同时也能正常更新组件状态。
