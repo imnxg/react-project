@@ -154,7 +154,7 @@ function MyComponent() {
 
 
 
-### 问题4 变量问题
+### 问题4： 变量赋值
 
 背景
 
@@ -184,13 +184,13 @@ TypeError: Assignment to constant variable.
 
 原因：
 
-在使用
+在使用菜单自动收缩按钮时
 
 ```
 const [collapsed,setCollapsed] = useState(false)
 ```
 
-对其赋值了
+对setCollapsed进行了赋值：
 
 ```
   const handleCollapsed = () => {
@@ -198,9 +198,7 @@ const [collapsed,setCollapsed] = useState(false)
   };
 ```
 
-这个错误是因为你尝试在一个常量变量上进行赋值操作，而常量变量的值是不能被修改的。你需要将这个常量变量改为一个普通的变量，或者使用其他方法来达到你的目的。
-
-
+这个错误是因为尝试在一个常量变量上进行赋值操作，而常量变量的值是不能被修改的。你需要将这个常量变量改为一个普通的变量，或者使用其他方法来达到你的目的。
 
 如果你想要修改`collapsed`的值，你需要将`const`关键字改为`let`或`var`，这样就可以对`collapsed`进行赋值操作了。例如：
 
