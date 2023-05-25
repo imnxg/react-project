@@ -5,14 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
 
   plugins: [react()],
-  //    // 强制预构建插件包
-  //  optimizeDeps: {
-  //   //检测需要预构建的依赖项
-  //   // entries: [],
-  //   //默认情况下，不在 node_modules 中的，链接的包不会预构建
-  //   include: ['Login','Home','CommodityManagement','TradeOrder','UserManagement','MenuManagement','RoleManagement'],
-  //   // exclude:['your-package-name'] //排除在优化之外
-  //  },
+
   // 静态资源路径
   base: './',
   // 引入第三方的配置
@@ -54,11 +47,7 @@ export default defineConfig({
   // 打包配置
   build: {
     // 压缩
-    // minify: 'esbuild',
-    // 打包后的文件夹
-    // outDir: 'dist',
-    // 打包后是否生成 source map 文件
-    // sourcemap: false,
+    minify: 'esbuild',
     // 打包后是否生成 manifest.json 文件
     // manifest: false,
     target: 'modules', // 设置最终构建的浏览器兼容目标。modules:支持原生 ES 模块的浏览器
@@ -93,11 +82,9 @@ export default defineConfig({
               .toString();
           }
         },
-        chunkFileNames: (chunkInfo) => {
-          const facadeModuleId = chunkInfo.facadeModuleId ? chunkInfo.facadeModuleId.split('/') : [];
-          const fileName = facadeModuleId[facadeModuleId.length - 2] || '[name]';
-          return `js/${fileName}/[name].[hash].js`;
-        }
+        chunkFileNames: 'js/[name]-[hash].js',
+        entryFileNames: 'js/[name]-[hash].js',
+        assetFileNames: '[ext]/[name]-[hash].[ext]'
       },
     }
   },
