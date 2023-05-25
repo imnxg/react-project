@@ -1,0 +1,84 @@
+
+.loginContainer {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: calc(30vh - 150px);
+  }
+  
+  .loginCanvas {
+    width: 380px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  
+    /* 在这里设置flex-direction属性为column */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .userTitle {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+  
+  .inputLabel {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .inputField {
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .inputField input[type="text"],
+  .inputField input[type="password"] {
+    width: 100%;
+    outline: none;
+    border: none;
+  }
+  
+  .invidate {
+    margin-bottom: 16px;
+  }
+  
+  .rember {
+    margin-bottom: 16px;
+  }
+  
+  .loginButton {
+    text-align: center;
+  }
+  
+  .button {
+    width: 380px;
+    display: inline-block;
+    padding: 8px 24px;
+    background-color: #1890ff;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .button:hover {
+    background-color: #40a9ff;
+  }
+    
