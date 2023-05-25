@@ -51,7 +51,7 @@ export default defineConfig({
     // 打包后是否生成 manifest.json 文件
     // manifest: false,
     target: 'modules', // 设置最终构建的浏览器兼容目标。modules:支持原生 ES 模块的浏览器
-    outDir: 'dist', // 指定输出路径
+    outDir: './dist', // 指定输出路径
     assetsPublicPath: './', // 指定生成静态资源的存放路径
     // assetsDir: 'assets', // 指定生成静态资源的存放路径
     // assetsInlineLimit: '4096', // 小于此阈值的导入或引用资源将内联为base64编码，设置为0可禁用此项。默认4096（4kb）
