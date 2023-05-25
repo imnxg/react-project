@@ -1,16 +1,10 @@
-import React,{useState,useRef} from 'react';
-// import ReactDOM from 'react-dom/client';
+import React,{useState} from 'react';
 import '../css/login.css';
-import { BrowserRouter as Router, Routes, Route,useNavigate } from "react-router-dom";
-import { Layout, Menu, Breadcrumb, Button, Message,Input } from '@arco-design/web-react';
-import { IconHome, IconCalendar, IconCaretRight, IconCaretLeft } from '@arco-design/web-react/icon';
-// import { Form, Input, Button, Checkbox } from 'antd';
-// import { UserOutlined, LockOutlined } from '@ant-design/icons';
-// import "@arco-design/web-react/dist/css/arco.css";
-// import reportWebVitals from './reportWebVitals';
+import { useNavigate } from "react-router-dom";
+import { Button} from '@arco-design/web-react';
+
 
 function Login() {
-  const myRef  = useRef(null);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -46,7 +40,7 @@ function Login() {
     };
 
   return (
-    <div className="loginContainer" ref={myRef}>
+    <div className="loginContainer">
       <div className="loginCanvas">
         <div className="userTitle">用户登录</div>
 

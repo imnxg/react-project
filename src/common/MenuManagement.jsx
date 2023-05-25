@@ -1,25 +1,12 @@
-import { useRef, useEffect, useState } from 'react';
 import {
   Form,
-  AutoComplete,
   Input,
   Select,
-  TreeSelect,
   Button,
-  Checkbox,
-  Switch,
-  Radio,
-  Cascader,
   Message,
-  InputNumber,
-  Rate,
-  Slider,
-  Upload,
-  DatePicker,
-  Modal,
   Space,
 } from '@arco-design/web-react';
-import { IconPlus, IconDelete, IconSearch } from '@arco-design/web-react/icon';
+import { IconPlus } from '@arco-design/web-react/icon';
 
 const FormItem = Form.Item;
 
@@ -43,13 +30,6 @@ const noLabelLayout = {
  * @returns 
  */
 function MenuManagement() {
-  const formRef = useRef();
-
-  useEffect(() => {
-    formRef.current.setFieldsValue({
-      rate: 5,
-    });
-  }, []);
 
   const onValuesChange = (changeValue, values) => {
     console.log('onValuesChange: ', changeValue, values);
@@ -66,7 +46,6 @@ function MenuManagement() {
         <Button type="primary" icon={<IconPlus />} onClick={() => { }}>添加</Button>
       </Space>
       <Form
-        ref={formRef}
         autoComplete='off'
         {...formItemLayout}
 

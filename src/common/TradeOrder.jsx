@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { Table, Space, Button, Input,Select,Message } from '@arco-design/web-react';
-import { IconPlus, IconDelete, IconSearch } from '@arco-design/web-react/icon';
+import { IconSearch } from '@arco-design/web-react/icon';
 
 const columns = [
   {
@@ -113,7 +113,6 @@ const allData = Array(200)
   }));
 
 function TradeOrder() {
-  const myRef = useRef(null);
 
   const [data, setData] = useState(allData);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -141,7 +140,7 @@ function TradeOrder() {
   const options = ['Beijing', 'Shanghai', 'Guangzhou', 'Disabled'];
 
   return (
-    <div ref={myRef}>
+    <div>
       <Space size='large'>
 
         <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门名称' />

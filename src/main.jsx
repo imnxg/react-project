@@ -1,4 +1,4 @@
-import React,{useState,useEffect, useRef} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Login from './common/Login.jsx';
@@ -12,8 +12,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "@arco-design/web-react/dist/css/arco.css";
 
 function App() {
-  const myRef  = useRef(null);
-  
+
   return (
     <>
 
