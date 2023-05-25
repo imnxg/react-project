@@ -1,4 +1,4 @@
-import React,{useState,forwardRef} from 'react';
+import React,{useState} from 'react';
 import { Layout, Menu, Breadcrumb, Button, Message } from '@arco-design/web-react';
 import { IconHome, IconCalendar, IconCaretRight, IconCaretLeft } from '@arco-design/web-react/icon';
 import { Link, Outlet} from 'react-router-dom';
@@ -10,8 +10,8 @@ const Header = Layout.Header;
 const Footer = Layout.Footer;
 const Content = Layout.Content;
 
-const Home = forwardRef(
-function Home(props,ref){
+
+function Home(){
 
   const [collapsed,setCollapsed] = useState(false)
   const [itemName,setItemName] =useState("商品管理");
@@ -145,7 +145,6 @@ function Home(props,ref){
     </Layout>
     
   );
-
-});
+}
 
 export default Home;
