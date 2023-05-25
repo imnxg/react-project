@@ -5,7 +5,7 @@ import React, {
   useContext,
   useCallback
 } from 'react';
-import { Button, Table, Input, Select, Form, Space, SpaceProps } from '@arco-design/web-react';
+import { Button, Table, Input, Select, Form, Space } from '@arco-design/web-react';
 import { IconPlus, IconDelete, IconSearch } from '@arco-design/web-react/icon';
 const FormItem = Form.Item;
 const EditableContext = React.createContext({});
