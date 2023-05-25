@@ -4,6 +4,15 @@
 
 
 
+> React Router v6 是 React Router 的最新版本，使用了全新的 API 和设计理念，并且不完全向后兼容 v5。
+>
+> 以下是 React Router v6 的一些主要更改：
+>
+> - 新的 Hooks API：React Router v6 中引入了许多新的 Hooks，例如“useRoutes”、“useMatch”、“useNavigate”、“useLocation”等。
+> - 新的路由配置方式：React Router v6 中使用一个名为“Routes”的组件包裹所有的<Route>，而不是使用<Switch>。
+> - 修改<Route>组件：React Router v6 中的<Route>组件不再接受“path”和“exact”属性，取而代之的是使用“element”属性来指定要渲染的组件。
+> - 删除很多不常用的 API，简化了 API 的使用。
+
 
 
 ## 路由的使用

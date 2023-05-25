@@ -71,6 +71,24 @@ function MyComponent() {
 
 请注意，`ref` 属性的值应该是一个回调函数或 `useRef` 的返回值。在这个例子中，我们使用了 `useRef` 来创建一个可变的引用，然后将其传递给 `div` 元素的 `ref` 属性。
 
+解决办法2：
+
+直接去掉检查，控制台就不会该提示信息了
+
+```
+ReactDOM.createRoot(document.getElementById('root')).render(
+ // <React.StrictMode>
+    <BrowserRouter>
+    <App />
+    </BrowserRouter>
+ // </React.StrictMode>,
+)
+```
+
+
+
+
+
 ### 问题2：分页点击问题
 
 ```
