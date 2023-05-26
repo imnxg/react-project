@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { Layout, Menu, Breadcrumb, Button, Message } from '@arco-design/web-react';
 import { IconHome, IconCalendar, IconCaretRight, IconCaretLeft } from '@arco-design/web-react/icon';
 import { Link, Outlet} from 'react-router-dom';
+import Drop from '../common/Drop';
 
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
@@ -28,12 +29,13 @@ function Home(){
     <Layout className='layout-collapse-demo'>
       <Sider collapsed={collapsed} collapsible trigger={null} breakpoint='xl'>
         <div className='logo' />
+        
         <Menu
           defaultOpenKeys={['1']}
           defaultSelectedKeys={['1_1']}
           onClickMenuItem={(key,event) =>
             Message.info({
-              content: `You select ${key}, ${event.target.innerText}   ${itemLink}`,
+              content: `You select ${key}, ${event.target.innerText}`,
               showIcon: true,
             }, 
             setItemName(event.target.innerText),
@@ -46,8 +48,9 @@ function Home(){
             )
             
           }
-          style={{ width: '100%' }}
+          style={{ width: '100%'}}
         >
+          
           <MenuItem key='0_1' disabled>
             <IconHome />
             Menu 1
@@ -118,10 +121,12 @@ function Home(){
         </Menu>
       </Sider>
       <Layout>
-        <Header>
+      
+        <Header style={{}}>
           <Button shape='round' className='trigger' onClick={handleCollapsed}>
             {collapsed ? <IconCaretRight /> : <IconCaretLeft />}
           </Button>
+          <Drop/>
         </Header>
         <Layout style={{ padding: '0 24px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
