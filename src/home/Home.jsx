@@ -15,7 +15,7 @@ const Content = Layout.Content;
 function Home(){
 
   const [collapsed,setCollapsed] = useState(false)
-  const [itemName,setItemName] =useState("商品管理");
+  const [itemName,setItemName] = useState("商品管理");
   
   // const [itemId,setItemId] = useState("1_1");
   // const [itemLink,setItemLink] = useState("");
@@ -39,7 +39,7 @@ function Home(){
               showIcon: true,
             }, 
             setItemName(event.target.innerText),
-            setItemId(key),
+            // setItemId(key),
             // this.setState({  
             //   setItemName: event.target.innerText,
             //   itemId: key,
