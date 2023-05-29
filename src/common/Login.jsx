@@ -84,14 +84,14 @@ function Login() {
           <div className="inputFieldInvidate">
             <input type="text" className='inputInvidate' placeholder="图形验证码" />
             {/* //省略图形验证码的实现,这里直接使用了一张图片,图片地址为./assets/invidate.jpg,可以自行替换,图片大小为100*40,图片中的验证码为1234,可以自行修改,但是需要修改下面的代码,将1234修改为你的验证码,否则无法登录,这里只是简单的实现了一个登录页面,并没有实现验证码的功能 */}
-            <img src="./assets/invidate.jpg" alt=""  className='invidatePic'/>
+            <span className="invidatePic"><img src="./assets/invidate.jpg" alt="imgName"  className=''/></span>
           </div>
         </div>
 
-        <div className="rember">
+        <div className="inputContainer">
           <label>
-            <input type="checkbox" onChange={handleRememberMeChange} name="rember_me" value="1" />
-            记住密码
+            <span className='remember_me'><input type="checkbox" onChange={handleRememberMeChange} value="1" /></span>
+            <span className='rememberText'>记住密码</span>
           </label>
         </div>
 
