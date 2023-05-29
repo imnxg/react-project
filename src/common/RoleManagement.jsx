@@ -265,11 +265,11 @@ function RoleManagement() {
       dataIndex: 'op',
       render: (_, record) => (
         <Button
-          onClick={() => removeRow(record.key)}
+          onClick={() => {removeRow(record.key); console.log(record)}}
           type='primary'
           status='danger'
         >
-          Delete
+          删除
         </Button>
       )
     }
@@ -282,6 +282,15 @@ function RoleManagement() {
     current: 1,
     pageSizeChangeResetCurrent: true,
   });
+  function onChangeTable(pagination) {
+    const { current, pageSize } = pagination;
+    setLoading(true);
+    setTimeout(() => {
+      setData(allData.slice((current - 1) * pageSize, current * pageSize));
+      setPagination((pagination) => ({ ...pagination, current, pageSize }));
+      setLoading(false);
+    }, 1000);
+  }
   function handleSave(row) {
     const newData = [...data];
     const index = newData.findIndex(item => row.key === item.key);
@@ -313,12 +322,15 @@ function RoleManagement() {
         <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入角色名称' />
         <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入角色代码' />
         <Button type='primary' style={{ marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>
-        <Button type='primary' style={{ marginBottom: 10 }} icon={<IconPlus />} >添加</Button>
+        <Button type='primary' style={{ marginBottom: 10 }} icon={<IconPlus />}  
+        onClick={addRow}
+        >添加</Button>
       </Space>
 
       <Table
         data={data}
         pagination={pagination}
+        onChange={onChangeTable}
         pagePosition='bl'
         components={{
           body: {

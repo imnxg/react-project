@@ -4,6 +4,9 @@ import { IconPlus, IconSearch } from '@arco-design/web-react/icon';
 import AllData from '../mock/commodity.ts';
 import AddCommotdity from '../components/AddCommotdity.jsx';
 
+const xiugai = (row) => {
+  console.log(row);
+}
 
 const columns = [
   {
@@ -61,6 +64,7 @@ const columns = [
         <Button
           style={{ marginRight: "10px" }}
           // onClick={() => removeRow(record.key)}
+          onClick={(row) =>xiugai(record)}
           type='default'
           status='defult'
         >
@@ -122,7 +126,7 @@ function CommodityManagement() {
         <Button type='primary' style={{ width: 130, marginRight: 0, marginBottom: 10 }} icon={<IconPlus />} >添加</Button> 
        
       </Space> */}
- <AddCommotdity />
+      <AddCommotdity />
       <Table
         loading={loading}
         columns={columns}
