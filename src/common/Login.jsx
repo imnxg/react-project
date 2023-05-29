@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../css/login.css';
 import { useNavigate } from "react-router-dom";
-import { Button } from '@arco-design/web-react';
-
+import { Input,Button,Form } from '@arco-design/web-react';
+const FormItem = Form.Item;
 /**
  * 登录页面
  * @returns 
@@ -59,47 +59,71 @@ function Login() {
     setRememberMe(event.target.checked);
   };
 
+  const [form] = Form.useForm();
+  const formItemLayout = {
+    labelCol: {
+      span: 4,
+    },
+    wrapperCol: {
+      span: 20,
+    },
+  };
   return (
     <div className="loginContainer">
       <div className="loginCanvas">
         <div className="userTitle">用户登录</div>
-
+        <Form
+          {...formItemLayout}
+          form={form}
+          labelCol={{
+            style: { flexBasis: 90 },
+          }}
+          wrapperCol={{
+            style: { flexBasis: 'calc(100% - 0px)' },
+          }}
+        >
         <div className="inputContainer">
           {/* <div className="inputLabel">账号</div> */}
-          <input type="text" onChange={handleUsernameChange} className="inputField" placeholder="请输入账号" />
+          <FormItem label='' field='username' rules={[{ required: true }]}>
+          <Input type="text" onChange={handleUsernameChange} id="inputField" placeholder="请输入账号" />
+          </FormItem>
         </div>
 
         <div className="inputContainer">
           {/* <div className="inputLabel">密码</div> */}
-          <input
+          <FormItem label='' field='password' rules={[{ required: true }]}>
+          <Input
             type="password"
             onChange={handlePasswordChange}
-            className="inputField"
+            id="inputField"
             placeholder="请输入密码"
           />
+          </FormItem>
         </div>
 
         <div className="inputContainer">
           {/* <div className="inputLabel">图形验证</div> */}
           <div className="inputFieldInvidate">
-            <input type="text" className='inputInvidate' placeholder="图形验证码" />
-            {/* //省略图形验证码的实现,这里直接使用了一张图片,图片地址为./assets/invidate.jpg,可以自行替换,图片大小为100*40,图片中的验证码为1234,可以自行修改,但是需要修改下面的代码,将1234修改为你的验证码,否则无法登录,这里只是简单的实现了一个登录页面,并没有实现验证码的功能 */}
-            <span className="invidatePic"><img src="./assets/invidate.jpg" alt="imgName"  className=''/></span>
+          <FormItem label='' field='name' rules={[{ required: true }]}>
+            <Input type="text" id='inputInvidate' placeholder="图形验证码" />
+           <span className="invidatePic"><img src="./assets/invidate.jpg" alt="imgName"  className=''/></span>
+           </FormItem>
           </div>
         </div>
 
         <div className="inputContainer">
           <label>
-            <span className='remember_me'><input type="checkbox" onChange={handleRememberMeChange} value="1" /></span>
+            <span className='remember_me'><input type="checkbox" className="checkboxLable" onChange={handleRememberMeChange} value="1" /></span>
             <span className='rememberText'>记住密码</span>
           </label>
         </div>
 
         <div className="inputContainer">
-          <Button type="submit" onClick={handleLogin} className="loginButton">
+          <Button type="submit" onClick={handleLogin} id="loginButton">
             登录
           </Button>
         </div>
+        </Form>
       </div>
     </div>
   );

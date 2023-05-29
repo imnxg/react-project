@@ -8,13 +8,6 @@ import TradeOrder from "./common/TradeOrder.jsx";
 import UserManagement from "./common/UserManagement.jsx";
 import MenuManagement from "./common/MenuManagement.jsx";
 import RoleManagement from "./common/RoleManagement.jsx";
-// const Login = ()=> import("./common/Login.jsx");
-// const Home = ()=> import("./home/Home.jsx");
-// const CommodityManagement = ()=> import("./common/CommodityManagement.jsx");
-// const TradeOrder = ()=>  import("./common/TradeOrder.jsx");
-// const UserManagement = ()=>  import("./common/UserManagement.jsx");
-// const MenuManagement = ()=> import("./common/MenuManagement.jsx");
-// const RoleManagement = ()=>  import("./common/RoleManagement.jsx");
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "@arco-design/web-react/dist/css/arco.css";
 

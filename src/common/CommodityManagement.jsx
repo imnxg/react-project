@@ -1,7 +1,9 @@
-import { useState, useEffect, useRef,forwardRef } from 'react';
-import { Table, Space, Button,Input } from '@arco-design/web-react';
-import { IconPlus,IconSearch } from '@arco-design/web-react/icon';
+import { useState } from 'react';
+import { Table, Space, Button, Input } from '@arco-design/web-react';
+import { IconPlus, IconSearch } from '@arco-design/web-react/icon';
 import AllData from '../mock/commodity.ts';
+import AddCommotdity from '../components/AddCommotdity.jsx';
+
 
 const columns = [
   {
@@ -57,20 +59,20 @@ const columns = [
     render: (_, record) => (
       <div>
         <Button
-        style={{marginRight: "10px"}}
-        // onClick={() => removeRow(record.key)}
-        type='default'
-        status='defult'
-      >
-        编辑
-      </Button>
-      <Button
-        // onClick={() => removeRow(record.key)}
-        type='primary'
-        status='danger'
-      >
-        Delete
-      </Button>
+          style={{ marginRight: "10px" }}
+          // onClick={() => removeRow(record.key)}
+          type='default'
+          status='defult'
+        >
+          编辑
+        </Button>
+        <Button
+          // onClick={() => removeRow(record.key)}
+          type='primary'
+          status='danger'
+        >
+          Delete
+        </Button>
       </div>
     )
   },
@@ -86,8 +88,7 @@ const columns = [
 //   }));
 const allData = AllData;
 
-const CommodityManagement = forwardRef(
-function CommodityManagement(props, ref) {
+function CommodityManagement() {
 
   const [data, setData] = useState(allData);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -112,16 +113,16 @@ function CommodityManagement(props, ref) {
   }
 
   return (
-    <div ref={ref}>
+    <div >
 
-      <Space size='large'>
-      <center style={{marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门名称'/> 
-      <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门代码' />
-      <Button type='primary'style={{ width: 130, marginRight: 0, marginBottom: 10 }}  icon={<IconSearch />}>搜索</Button>
-      <Button type='primary' style={{ width: 130, marginRight: 0, marginBottom: 10 }} icon={<IconPlus />} >添加</Button>
-        </Space>
+      {/* <Space size='large'>
+     <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门名称' />
+        <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门代码' />
+        <Button type='primary' style={{ width: 130, marginRight: 0, marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>
+        <Button type='primary' style={{ width: 130, marginRight: 0, marginBottom: 10 }} icon={<IconPlus />} >添加</Button> 
        
-
+      </Space> */}
+ <AddCommotdity />
       <Table
         loading={loading}
         columns={columns}
@@ -157,6 +158,6 @@ function CommodityManagement(props, ref) {
     </div>
 
   );
-})
+}
 
 export default CommodityManagement;

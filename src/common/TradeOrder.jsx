@@ -84,11 +84,12 @@ const columns = [
     dataIndex: 'operate',
     // sorter: (a, b) => a.email.length - b.email.length,
     render: (_, record) => (
-      <div>
+      <>
         <Button
           // onClick={() => removeRow(record.key)}
           type='text'
           status='default'
+          style={{ marginRight: 8 ,}}
         >预览</Button>
         <Button
           // onClick={() => removeRow(record.key)}
@@ -97,7 +98,7 @@ const columns = [
         >
           退款
         </Button>
-      </div>
+      </>
 
     )
   },
@@ -179,6 +180,7 @@ function TradeOrder() {
         loading={loading}
         columns={columns}
         data={data}
+        scroll={{ x: true, y: true }}
         pagination={pagination}
         onChange={onChangeTable}
         rowSelection={{
@@ -198,11 +200,11 @@ function TradeOrder() {
             }}
           >
             {paginationNode}
-            <Space>
+            {/* <Space>
               <span>Selected {selectedRowKeys.length}</span>
               <Button size='mini'>Save</Button>
               <Button size='mini'>Delete</Button>
-            </Space>
+            </Space> */}
 
           </div>
         )}
