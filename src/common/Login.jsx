@@ -96,11 +96,9 @@ function Login() {
         </div>
 
         <div className="inputContainer">
-          <div className="loginButton">
-          <Button type="submit" onClick={handleLogin} className="button">
+          <Button type="submit" onClick={handleLogin} className="loginButton">
             登录
           </Button>
-          </div>
         </div>
       </div>
     </div>
