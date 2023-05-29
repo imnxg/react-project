@@ -95,10 +95,12 @@ function Login() {
           </label>
         </div>
 
-        <div className="loginButton">
+        <div className="inputContainer">
+          <div className="loginButton">
           <Button type="submit" onClick={handleLogin} className="button">
             登录
           </Button>
+          </div>
         </div>
       </div>
     </div>
