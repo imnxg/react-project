@@ -1,13 +1,41 @@
-import { Dropdown, Menu, Button, Space,Message } from '@arco-design/web-react';
+import { Dropdown, Menu, Button, Space,Message,Modal } from '@arco-design/web-react';
 import { IconDown } from '@arco-design/web-react/icon';
 import React,{useState} from 'react';
 import { useNavigate,Link } from "react-router-dom";
 
+
+
+
+/**
+ * 退出登录
+ * @returns 
+ */
 function Drop() {
-  const [status,setStatus] = useState(false)
+  // const [status,setStatus] = useState(false)
   const navigate = useNavigate();
-  if(status){
-    signOut();
+  // if(status){
+  //   // confirm();
+  // }
+  function confirm() {
+    Modal.confirm({
+      title: '提示',
+      content:
+        '退出登录是否继续？',
+      okButtonProps: {
+        status: 'default',
+      },
+      onOk: () => {
+        return new Promise((resolve, reject) => {
+          setTimeout(Math.random() > 0.5 ? resolve : reject, 0);
+          navigate("/",{state:{value:111}});
+        }).catch((e) => {
+          // Message.error({
+          //   content: 'Error occurs!',
+          // });
+          // throw e;
+        });
+      },
+    });
   }
   const dropList = (
     <Menu 
@@ -19,14 +47,14 @@ function Drop() {
           content: `You select ${key}, ${event.target.innerText}`,
           showIcon: true,
       },
-      key=="3"?setStatus(true):""
+      // key=="3"?setStatus(true):""
       ) 
       }
     }
     >
       <Menu.Item key='1'>设置</Menu.Item>
       <Menu.Item key='2'>个人中心</Menu.Item>
-      <Menu.Item key='3'>退出</Menu.Item>
+      <Menu.Item key='3' onClick={confirm}>退出</Menu.Item>
     </Menu>
   );
 

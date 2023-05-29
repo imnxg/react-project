@@ -39,7 +39,7 @@ function Home(){
               showIcon: true,
             }, 
             setItemName(event.target.innerText),
-            // setItemId(key),
+  
             // this.setState({  
             //   setItemName: event.target.innerText,
             //   itemId: key,

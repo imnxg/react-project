@@ -3,7 +3,10 @@ import { IconSearch } from '@arco-design/web-react/icon';
 const Option = Select.Option;
 const options = ['Beijing', 'Shanghai', 'Guangzhou', 'Disabled'];
 
-
+/**
+ * 选择框
+ * @returns 
+ */
 const SelectDemo = () => {
   return (
     <div>
