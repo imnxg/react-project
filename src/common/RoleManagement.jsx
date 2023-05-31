@@ -264,13 +264,29 @@ function RoleManagement() {
       title: 'Operation',
       dataIndex: 'op',
       render: (_, record) => (
-        <Button
-          onClick={() => {removeRow(record.key); console.log(record)}}
-          type='primary'
-          status='danger'
-        >
-          删除
-        </Button>
+        <Space size='middle'>
+          <Button
+            onClick={() => { removeRow(record.key); console.log(record) }}
+            type='primary'
+            status='default'
+          >
+            编辑
+          </Button>
+          <Button
+            onClick={() => { removeRow(record.key); console.log(record) }}
+            type='primary'
+            status='danger'
+          >
+            删除
+          </Button>
+          <Button
+            onClick={() => { removeRow(record.key); console.log(record) }}
+            type='primary'
+            status='default'
+          >
+            菜单权限
+          </Button>
+        </Space>
       )
     }
   ];
@@ -322,8 +338,8 @@ function RoleManagement() {
         <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入角色名称' />
         <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入角色代码' />
         <Button type='primary' style={{ marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>
-        <Button type='primary' style={{ marginBottom: 10 }} icon={<IconPlus />}  
-        onClick={addRow}
+        <Button type='primary' style={{ marginBottom: 10 }} icon={<IconPlus />}
+          onClick={addRow}
         >添加</Button>
       </Space>
 

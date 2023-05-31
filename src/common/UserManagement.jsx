@@ -55,7 +55,7 @@ const columns = [
     // sorter: (a, b) => a.status.length - b.status.length,
     render: (_, record) => (
       <div>
-        <Switch />
+        <Switch  checked />
       </div>
     )
   },
@@ -64,7 +64,7 @@ const columns = [
     dataIndex: 'operate',
     // sorter: (a, b) => a.email.length - b.email.length,
     render: (_, record) => (
-      <div>
+      <Space size="small">
         <Button
         // onClick={() => removeRow(record.key)}
         type='text'
@@ -107,7 +107,7 @@ const columns = [
       >
         刷新缓存
       </Button>
-        </div>
+        </Space>
     )
   },
 ];

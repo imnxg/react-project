@@ -84,7 +84,7 @@ const columns = [
     dataIndex: 'operate',
     // sorter: (a, b) => a.email.length - b.email.length,
     render: (_, record) => (
-      <>
+      <Space>
         <Button
           // onClick={() => removeRow(record.key)}
           type='text'
@@ -98,7 +98,7 @@ const columns = [
         >
           退款
         </Button>
-      </>
+      </Space>
 
     )
   },
@@ -142,14 +142,16 @@ function TradeOrder() {
   }
 
   const Option = Select.Option;
-  const options = ['Beijing', 'Shanghai', 'Guangzhou', 'Disabled'];
-
+  const Option2 = Select.Option;
+  const options = ['现金', '支付宝', '微信', 'POS通', '闪付', 'POS通C扫码', '银联二维码','会员余额支付'];
+  const options2 = ['初始化', '已支付', '出货成功', '出货失败', '订单超时', '退款初始化', '退款进行中','退款成功','退款失败','订单处理中','订单完成','订单取消'];
   return (
     <div>
       <Space size='large'>
 
         <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门名称' />
         <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入订单号' />
+        <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入交易号' />
         <Select
           placeholder='请选择'
           style={{ width: 154, marginRight: 0, marginBottom: 10 }}
@@ -161,16 +163,25 @@ function TradeOrder() {
           }
         >
           {options.map((option, index) => (
-            <Option key={option} disabled={index === 3} value={option}>
+            <Option key={option} value={option}>
               {option}
             </Option>
           ))}
         </Select>
-        <Select placeholder='请选择' style={{ width: 154, marginRight: 0, marginBottom: 10 }} defaultValue='Beijing'>
-          {options.map((option, index) => (
-            <Option key={option} disabled={index === 4} value={option}>
+        <Select
+          placeholder='请选择'
+          style={{ width: 154, marginRight: 0, marginBottom: 10 }}
+          onChange={(value) =>
+            Message.info({
+              content: `You select ${value}.`,
+              showIcon: true,
+            })
+          }
+        >
+          {options2.map((option, index) => (
+            <Option2 key={option} value={option}>
               {option}
-            </Option>
+            </Option2>
           ))}
         </Select>
         <Button type='primary' style={{ marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>
