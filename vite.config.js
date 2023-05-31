@@ -4,7 +4,9 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
 
-  plugins: [react()],
+  plugins: [
+    react()
+  ],
 
   // 静态资源路径
   base: './',
@@ -32,7 +34,7 @@ export default defineConfig({
   // 本地服务配置
   server: {
     // 本地端口
-    port: 3000,
+    // port: 3000,
     // 是否自动打开浏览器
     open: true,
     // 代理

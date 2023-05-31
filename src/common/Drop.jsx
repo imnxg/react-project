@@ -1,5 +1,5 @@
 import { Dropdown, Menu, Button, Space,Message,Modal } from '@arco-design/web-react';
-import { IconDown } from '@arco-design/web-react/icon';
+import { IconDown,IconUser } from '@arco-design/web-react/icon';
 import React,{useState} from 'react';
 import { useNavigate,Link } from "react-router-dom";
 
@@ -70,7 +70,7 @@ function Drop() {
     <Space className='dropdown-demo' style={{ position: "fixed",right: "0",top:"0",margin: "5px"}}>
       <Dropdown droplist={dropList} position='bl'>
         <Button type='text'>
-          超级管理员<IconDown />
+        <IconUser />超级管理员<IconDown />
         </Button>
       </Dropdown>
       {/* <Dropdown droplist={dropList} position='bl' disabled>
