@@ -1,12 +1,9 @@
 import { useState } from 'react';
-import { Table, Space, Button, Input } from '@arco-design/web-react';
+import { Table, Button, Input,Message,Space,Modal,Form } from '@arco-design/web-react';
 import { IconPlus, IconSearch } from '@arco-design/web-react/icon';
 import AllData from '../mock/commodity.ts';
 import AddCommotdity from '../components/AddCommotdity.jsx';
-
-const xiugai = (row) => {
-  console.log(row);
-}
+import EditCommotdity from '../components/EditCommotdity.jsx';
 
 const columns = [
   {
@@ -61,10 +58,10 @@ const columns = [
     // sorter: (a, b) => a.email.length - b.email.length,
     render: (_, record) => (
       <div>
-        <Button
+        {/* <Button
           style={{ marginRight: "10px" }}
           // onClick={() => removeRow(record.key)}
-          onClick={(row) =>xiugai(record)}
+          onClick={() =>xiugai(record) }
           type='default'
           status='defult'
         >
@@ -75,8 +72,9 @@ const columns = [
           type='primary'
           status='danger'
         >
-          Delete
-        </Button>
+          删除
+        </Button> */}
+        <EditCommotdity record={record}/>
       </div>
     )
   },
@@ -92,10 +90,12 @@ const columns = [
 //   }));
 const allData = AllData;
 
-function CommodityManagement() {
 
+function CommodityManagement() {
+  
   const [data, setData] = useState(allData);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+ 
   const [pagination, setPagination] = useState({
     sizeCanChange: true,
     showTotal: true,
@@ -155,6 +155,7 @@ function CommodityManagement() {
               <Button size='mini'>Save</Button>
               <Button size='mini'>Delete</Button>
             </Space> */}
+             
 
           </div>
         )}
