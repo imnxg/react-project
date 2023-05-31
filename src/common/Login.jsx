@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/login.css';
 import { useNavigate } from "react-router-dom";
 import { Input, Button, Form } from '@arco-design/web-react';
@@ -8,7 +8,6 @@ const FormItem = Form.Item;
  * @returns 
  */
 function Login() {
-  const inputRef = useRef(null);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +15,6 @@ function Login() {
   const [rememberMe, setRememberMe] = useState(false);
 
   const navigate = useNavigate();
-
 
   useEffect(() => {
     // 判断是否已经登录，如果已经登录，跳转到主页,自动登录
