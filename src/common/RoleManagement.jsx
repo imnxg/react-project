@@ -347,6 +347,7 @@ function RoleManagement() {
       </Space>
 
       <Table
+        loading={loading}
         data={data}
         pagination={pagination}
         onChange={onChangeTable}

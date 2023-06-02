@@ -28,7 +28,7 @@ function AddCommotdity() {
     },
   };
   return (
-    <Space size='large'>
+    <Space size='large' align='baseline' direction="horizontal" style={{float:'left'}}>
         <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门名称' />
         <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门代码' />
         <Button type='primary' style={{ width: 130, marginRight: 0, marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>

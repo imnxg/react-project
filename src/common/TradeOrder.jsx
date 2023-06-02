@@ -10,7 +10,7 @@ const columns = [
     sorter: (a, b) => a.deptName.length - b.deptName.length,
   },
   {
-    title: '订单号',
+    title: '订单编号',
     dataIndex: 'orderNo',
     sorter: (a, b) => a.orderNo - b.orderNo,
     filters: [
@@ -103,6 +103,19 @@ const columns = [
     )
   },
 ];
+// 生成随机日期
+function randomDate(start, end) {
+  start = start || new Date(2019, 0, 1);
+  let date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  let year = date.getFullYear();
+  let month = String(date.getMonth() + 1).padStart(2, '0');
+  let day = String(date.getDate()).padStart(2, '0');
+  let hour = String(date.getHours()).padStart(2, '0');
+  let minute = String(date.getMinutes()).padStart(2, '0');
+  let second = String(date.getSeconds()).padStart(2, '0');
+  return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+}
+ 
 const allData = Array(200)
   .fill('')
   .map((_, index) => ({
@@ -111,20 +124,13 @@ const allData = Array(200)
     orderNo: `${Math.floor(Math.random() * 1000000) + 1}`,
     tradeNo: `${Date.now()+Math.floor(Math.random() * 10000)}`,
     payType: `${Math.floor(Math.random() * 100) + 1}`,
-    tradeType: `${Math.floor(Math.random() * 100) + 1}`,
+    tradeType: `${index % 2 === 0 ? '退款' : '消费'}`,
     commodityPrice: `${Math.floor(Math.random() * 100) + 1}`,
     payPrice: `${Math.floor(Math.random() * 100) + 1}`,
-    commodityName: `商品${Math.floor(Math.random() * 100) + 1}`,
+    commodityName: `可乐${Math.floor(Math.random() * 100) + 1}`,
     orderStatus: `${Math.floor(Math.random() * 100) + 1}`,
     // createTime: `${(Math.floor(Math.random() * (new Date().getFullYear() - 2019 + 1)) + 2019)+'-'+(Math.floor(Math.random() * 12) + 1)+'-'+(Math.floor(Math.random() * 30) + 1)+'-'+(Math.floor(Math.random() * 24))+':'+Math.floor(Math.random() * 60)+':'+Math.floor(Math.random() * 60)}`,
-    createTime: `${(Math.floor(Math.random() * (new Date().getFullYear() - 2019 + 1)) + 2019)+'-'+(Math.floor(Math.random() * 12) + 1)+'-'+(Math.floor(Math.random() * 30) + 1)+'-'+(Math.floor(Math.random() * 24))}`,
-    // payType: `${options[Math.floor(Math.random() * 8)]}`,
-    // tradeType: `${options2[Math.floor(Math.random() * 11)]}`,
-    // commodityPrice: `${Math.floor(Math.random() * 100) + 1}`,
-    // payPrice: `${Math.floor(Math.random() * 100) + 1}`,
-    // commodityName: `商品${Math.floor(Math.random() * 100) + 1}`,
-    // orderStatus: `${options2[Math.floor(Math.random() * 11)]}`,
-    
+    createTime: `${randomDate(new Date(2018, 0, 1), new Date())}`,
   }));
 
 /**
@@ -161,7 +167,7 @@ function TradeOrder() {
   const options2 = ['初始化', '已支付', '出货成功', '出货失败', '订单超时', '退款初始化', '退款进行中', '退款成功', '退款失败', '订单处理中', '订单完成', '订单取消'];
   return (
     <div>
-      <Space size='large'>
+      <Space size='large' align='baseline' direction="horizontal" style={{float:'left'}}>
 
         <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门名称' />
         <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入订单号' />
