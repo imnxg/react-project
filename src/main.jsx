@@ -9,12 +9,13 @@ import UserManagement from "./common/UserManagement.jsx";
 import MenuManagement from "./common/MenuManagement.jsx";
 import RoleManagement from "./common/RoleManagement.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import "@arco-design/web-react/dist/css/arco.css";
 
 function App() {
 
   return (
-    <>
+    <div>
 
         <Routes>
           <Route path="/" element={<Login />} />
@@ -28,7 +29,7 @@ function App() {
             <Route path='roleManagement' element={<RoleManagement />} />
           </Route>
         </Routes>
-    </>
+    </div>
   );
 }
 

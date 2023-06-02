@@ -1,17 +1,18 @@
 import { useState } from 'react';
-import { Table, Space, Button, Input,Select,Message } from '@arco-design/web-react';
+import { Table, Space, Button, Input, Select, Message } from '@arco-design/web-react';
 import { IconSearch } from '@arco-design/web-react/icon';
+import PreOrder from '../components/PreOrder';
 
 const columns = [
   {
     title: '终端编号',
-    dataIndex: 'departmentName',
-    sorter: (a, b) => a.departmentName.length - b.departmentName.length,
+    dataIndex: 'deptName',
+    sorter: (a, b) => a.deptName.length - b.deptName.length,
   },
   {
     title: '订单号',
-    dataIndex: 'departmentCode',
-    sorter: (a, b) => a.departmentCode - b.departmentCode,
+    dataIndex: 'orderNo',
+    sorter: (a, b) => a.orderNo - b.orderNo,
     filters: [
       {
         text: '> 20000',
@@ -22,15 +23,11 @@ const columns = [
         value: '30000',
       },
     ],
-    defaultFilters: ['20000'],
-    onFilter: (value, row) => row.departmentCode > value,
-    sortDirections: ['ascend'],
-    defaultSortOrder: 'ascend',
   },
   {
     title: '交易单号',
-    dataIndex: 'updateTime',
-    sorter: (a, b) => a.updateTime - b.updateTime,
+    dataIndex: 'tradeNo',
+    sorter: (a, b) => a.tradeNo - b.tradeNo,
     filters: [
       {
         text: 'London',
@@ -41,7 +38,7 @@ const columns = [
         value: 'Paris',
       },
     ],
-    onFilter: (value, row) => row.updateTime.indexOf(value) > -1,
+    onFilter: (value, row) => row.tradeNo.indexOf(value) > -1,
     filterMultiple: false,
   },
   {
@@ -81,24 +78,27 @@ const columns = [
   },
   {
     title: '操作',
-    dataIndex: 'operate',
+    dataIndex: ' ',
     // sorter: (a, b) => a.email.length - b.email.length,
     render: (_, record) => (
-      <Space>
-        <Button
-          // onClick={() => removeRow(record.key)}
-          type='text'
-          status='default'
-          style={{ marginRight: 8 ,}}
-        >预览</Button>
-        <Button
-          // onClick={() => removeRow(record.key)}
-          type='primary'
-          status='danger'
-        >
-          退款
-        </Button>
-      </Space>
+      // <Space>
+      //   <Button
+      //     // onClick={() => removeRow(record.key)}
+      //     type='text'
+      //     status='default'
+      //     style={{ marginRight: 8 ,}}
+      //   >预览</Button>
+      //   <Button
+      //     // onClick={() => removeRow(record.key)}
+      //     type='primary'
+      //     status='danger'
+      //   >
+      //     退款
+      //   </Button>
+      // </Space>
+      <div>
+        <PreOrder record={record} />
+      </div>
 
     )
   },
@@ -107,10 +107,24 @@ const allData = Array(200)
   .fill('')
   .map((_, index) => ({
     key: `${index}`,
-    departmentName: `Kevin Sandra ${index}`,
-    departmentCode: 22000,
-    updateTime: `${index} Park Road, London`,
-    modifyPerson: `kevin.sandra_${index}@example.com`,
+    deptName: `Kevin Sandra ${index}`,
+    orderNo: `${Math.floor(Math.random() * 1000000) + 1}`,
+    tradeNo: `${Date.now()+Math.floor(Math.random() * 10000)}`,
+    payType: `${Math.floor(Math.random() * 100) + 1}`,
+    tradeType: `${Math.floor(Math.random() * 100) + 1}`,
+    commodityPrice: `${Math.floor(Math.random() * 100) + 1}`,
+    payPrice: `${Math.floor(Math.random() * 100) + 1}`,
+    commodityName: `商品${Math.floor(Math.random() * 100) + 1}`,
+    orderStatus: `${Math.floor(Math.random() * 100) + 1}`,
+    // createTime: `${(Math.floor(Math.random() * (new Date().getFullYear() - 2019 + 1)) + 2019)+'-'+(Math.floor(Math.random() * 12) + 1)+'-'+(Math.floor(Math.random() * 30) + 1)+'-'+(Math.floor(Math.random() * 24))+':'+Math.floor(Math.random() * 60)+':'+Math.floor(Math.random() * 60)}`,
+    createTime: `${(Math.floor(Math.random() * (new Date().getFullYear() - 2019 + 1)) + 2019)+'-'+(Math.floor(Math.random() * 12) + 1)+'-'+(Math.floor(Math.random() * 30) + 1)+'-'+(Math.floor(Math.random() * 24))}`,
+    // payType: `${options[Math.floor(Math.random() * 8)]}`,
+    // tradeType: `${options2[Math.floor(Math.random() * 11)]}`,
+    // commodityPrice: `${Math.floor(Math.random() * 100) + 1}`,
+    // payPrice: `${Math.floor(Math.random() * 100) + 1}`,
+    // commodityName: `商品${Math.floor(Math.random() * 100) + 1}`,
+    // orderStatus: `${options2[Math.floor(Math.random() * 11)]}`,
+    
   }));
 
 /**
@@ -143,8 +157,8 @@ function TradeOrder() {
 
   const Option = Select.Option;
   const Option2 = Select.Option;
-  const options = ['现金', '支付宝', '微信', 'POS通', '闪付', 'POS通C扫码', '银联二维码','会员余额支付'];
-  const options2 = ['初始化', '已支付', '出货成功', '出货失败', '订单超时', '退款初始化', '退款进行中','退款成功','退款失败','订单处理中','订单完成','订单取消'];
+  const options = ['现金', '支付宝', '微信', 'POS通', '闪付', 'POS通C扫码', '银联二维码', '会员余额支付'];
+  const options2 = ['初始化', '已支付', '出货成功', '出货失败', '订单超时', '退款初始化', '退款进行中', '退款成功', '退款失败', '订单处理中', '订单完成', '订单取消'];
   return (
     <div>
       <Space size='large'>

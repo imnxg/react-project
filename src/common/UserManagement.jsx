@@ -64,7 +64,7 @@ const columns = [
     dataIndex: 'operate',
     // sorter: (a, b) => a.email.length - b.email.length,
     render: (_, record) => (
-      <Space size="small">
+      <Space align='baseline' wrap={true} size="mini" direction="horizontal">
         <Button
         // onClick={() => removeRow(record.key)}
         type='text'
@@ -115,10 +115,17 @@ const allData = Array(200)
   .fill('')
   .map((_, index) => ({
     key: `${index}`,
-    companyName: `Kevin Sandra ${index}`,
-    userName: `张三_${index}`,
-    // updateTime: `${index} `,
+    companyName: `xx公司 ${index}`,
+    userName: `user_${index}`,
+    name: `张三_${index}`,
+    phone: `1380013800${index}`,
+    gender: `${index % 2 === 0 ? '男' : '女'}`,
     email: `kevin.sandra_${index}@example.com`,
+    updateTime: `${(Math.floor(Math.random() * (new Date().getFullYear() - 2019 + 1)) + 2019)+'-'+(Math.floor(Math.random() * 12) + 1)+'-'+(Math.floor(Math.random() * 30) + 1)+'-'+(Math.floor(Math.random() * 24))}`,
+    status: `${index % 2 === 0 ? '启用' : '禁用'}`,
+
+    // updateTime: `${index} `,
+    
   }));
 
 /**
@@ -164,6 +171,7 @@ function UserManagement() {
         data={data}
         pagination={pagination}
         onChange={onChangeTable}
+        hover={true}
         rowSelection={{
           selectedRowKeys,
           onChange: (selectedRowKeys, selectedRows) => {
