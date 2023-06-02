@@ -134,135 +134,138 @@ function EditableCell(props) {
  */
 function RoleManagement() {
   const [count, setCount] = useState(5);
+  const [loading,setLoading] = useState(false);
 
-  const [data, setData] = useState([
+  const allData = [
     {
       key: '1',
-      name: 'Jane Doe',
-      salary: 23000,
-      address: '32 Park Road, London',
-      email: 'jane.doe@example.com'
+      roleName: '超级管理员',
+      roleCode: 'admin',
+      updateTime: '2020-12-12 16:12:12',
+      updateUser: 'root'
     },
     {
       key: '2',
-      name: 'Alisa Ross',
-      salary: 25000,
-      address: '35 Park Road, London',
-      email: 'alisa.ross@example.com'
+      roleName: '公司管理员',
+      roleCode: 'admin',
+      updateTime: '2020-12-12 16:12:12',
+      updateUser: 'user'
     },
     {
       key: '3',
-      name: 'Kevin Sandra',
-      salary: 22000,
-      address: '31 Park Road, London',
-      email: 'kevin.sandra@example.com'
+      roleName: '普通用户',
+      roleCode: 'common',
+      updateTime: '2023-05-19 16:12:12',
+      updateUser: 'user'
     },
     {
       key: '4',
-      name: 'Ed Hellen',
-      salary: 17000,
-      address: '42 Park Road, London',
-      email: 'ed.hellen@example.com'
+      roleName: '演示角色',
+      roleCode: 'demo',
+      updateTime: '2023-05-22 16:12:12',
+      updateUser: 'user'
     },
     {
       key: '5',
-      name: 'William Smith',
-      salary: 27000,
-      address: '62 Park Road, London',
-      email: 'william.smith@example.com'
+      roleName: '1',
+      roleCode: 'demo',
+      updateTime: '2023-05-22 16:12:12',
+      updateUser: 'user'
     },
     {
       key: '6',
-      name: 'Jane Doe',
-      salary: 23000,
-      address: '32 Park Road, London',
-      email: 'jane.doe@example.com'
+      roleName: '1',
+      roleCode: 'demo',
+      updateTime: '2023-05-22 16:14:12',
+      updateUser: 'user'
     },
     {
       key: '7',
-      name: 'Alisa Ross',
-      salary: 25000,
-      address: '35 Park Road, London',
-      email: 'alisa.ross@example.com'
+      roleName: '1',
+      roleCode: 'demo',
+      updateTime: '2023-05-25 16:14:12',
+      updateUser: 'user'
     },
     {
       key: '8',
-      name: 'Kevin Sandra',
-      salary: 22000,
-      address: '31 Park Road, London',
-      email: 'kevin.sandra@example.com'
+      roleName: '111',
+      roleCode: 'demo',
+      updateTime: '2023-05-22 16:18:12',
+      updateUser: 'user'
     },
     {
       key: '9',
-      name: 'Ed Hellen',
-      salary: 17000,
-      address: '42 Park Road, London',
-      email: 'ed.hellen@example.com'
+      roleName: '1',
+      roleCode: 'demo',
+      updateTime: '2023-05-22 16:14:12',
+      updateUser: 'user'
     },
     {
       key: '10',
-      name: 'William Smith',
-      salary: 27000,
-      address: '62 Park Road, London',
-      email: 'william.smith@example.com'
-    }, {
+      roleName: '1',
+      roleCode: 'demo',
+      updateTime: '2023-05-23 16:16:12',
+      updateUser: 'user'
+    },
+    {
       key: '11',
-      name: 'Jane Doe',
-      salary: 23000,
-      address: '32 Park Road, London',
-      email: 'jane.doe@example.com'
+      roleName: '1',
+      roleCode: 'demo',
+      updateTime: '2023-05-23 17:14:12',
+      updateUser: 'user'
     },
     {
       key: '12',
-      name: 'Alisa Ross',
-      salary: 25000,
-      address: '35 Park Road, London',
-      email: 'alisa.ross@example.com'
+      roleName: '1',
+      roleCode: 'demo',
+      updateTime: '2023-05-22 16:14:16',
+      updateUser: 'user'
     },
     {
       key: '13',
-      name: 'Kevin Sandra',
-      salary: 22000,
-      address: '31 Park Road, London',
-      email: 'kevin.sandra@example.com'
+      roleName: '1',
+      roleCode: 'demo',
+      updateTime: '2023-05-22 10:14:12',
+      updateUser: 'user'
     },
     {
       key: '14',
-      name: 'Ed Hellen',
-      salary: 17000,
-      address: '42 Park Road, London',
-      email: 'ed.hellen@example.com'
+      roleName: '1',
+      roleCode: 'demo',
+      updateTime: '2023-05-22 19:14:12',
+      updateUser: 'user'
     },
     {
       key: '15',
-      name: 'William Smith',
-      salary: 27000,
-      address: '62 Park Road, London',
-      email: 'william.smith@example.com'
+      roleName: '公司管理员',
+      roleCode: 'admin',
+      updateTime: '2020-12-12 20:12:12',
+      updateUser: 'user'
     }
-  ]);
+  ];
+  const [data, setData] = useState(allData);
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
+      title: '角色名称',
+      dataIndex: 'roleName',
       editable: true
     },
     {
-      title: 'Salary',
-      dataIndex: 'salary',
+      title: '角色代码',
+      dataIndex: 'roleCode',
       editable: true
     },
     {
-      title: 'Address',
-      dataIndex: 'address'
+      title: '修改时间',
+      dataIndex: 'updateTime'
     },
     {
-      title: 'Email',
-      dataIndex: 'email'
+      title: '修改人',
+      dataIndex: 'updateUser'
     },
     {
-      title: 'Operation',
-      dataIndex: 'op',
+      title: '操作',
+      dataIndex: 'operation',
       render: (_, record) => (
         <Space size='middle'>
           <Button
@@ -323,10 +326,10 @@ function RoleManagement() {
     setData(
       data.concat({
         key: `${count + 1}`,
-        name: 'Tom',
-        salary: 10000,
-        address: '33 Park Road, London',
-        email: 'tom@example.com'
+        roleName: 'Tom',
+        roleCode: 'Administator',
+        updateTime: '2020-12-12 12:12:12',
+        updateUser: 'root'
       })
     );
   }
