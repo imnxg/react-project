@@ -158,7 +158,7 @@ function UserManagement() {
 
   return (
     <div>
-      <Space size="large" align='baseline' direction="horizontal" style={{float:'left'}}>
+      <Space size="large" align='baseline' direction="horizontal">
       <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130 ,marginRight: "10px",marginBottom: 10 }} allowClear placeholder='输入部门名称'/> 
       <Input style={{ width: 130 ,marginRight: "10px",marginBottom: 10 }} allowClear placeholder='输入部门代码' />
       <Button type='primary' style={{ marginRight: "10px",marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>

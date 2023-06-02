@@ -13,7 +13,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "@arco-design/web-react/dist/css/arco.css";
 
 function App() {
+  const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
 
+  darkThemeMq.addListener(e => {
+   if (e.matches) {
+     document.body.setAttribute('arco-theme', 'dark');
+   } else {
+      document.body.removeAttribute('arco-theme');
+    }
+  });
   return (
     <div>
 

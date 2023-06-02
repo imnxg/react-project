@@ -63,6 +63,16 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.layout-collapse-demo .arco-layout-footer, .layout-collapse-demo .arco-layout-content {
+  text-align: left !important;
+}
+
+/* 调整整体背景和字体 */
+body {
+  background-color: var(--color-bg-1);
+  color: var(--color-text-1);
+}
+/* //主题颜色，可自定义 */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

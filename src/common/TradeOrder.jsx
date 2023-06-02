@@ -167,7 +167,7 @@ function TradeOrder() {
   const options2 = ['初始化', '已支付', '出货成功', '出货失败', '订单超时', '退款初始化', '退款进行中', '退款成功', '退款失败', '订单处理中', '订单完成', '订单取消'];
   return (
     <div>
-      <Space size='large' align='baseline' direction="horizontal" style={{float:'left'}}>
+      <Space size='large'>
 
         <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门名称' />
         <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入订单号' />
