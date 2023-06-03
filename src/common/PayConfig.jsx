@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { Table, Button, Input,Message,Space,Modal,Form } from '@arco-design/web-react';
 import { IconPlus, IconSearch } from '@arco-design/web-react/icon';
-import AllData from '../mock/CommodityData.ts';
-import AddCommotdity from '../components/AddCommotdity.jsx';
-import EditCommotdity from '../components/EditCommotdity.jsx';
+import PayConfigData from '../mock/PayConfigData.ts';
+import AddPayConfig from '../components/AddPayConfig.jsx';
+import EditPayconfig from '../components/EditPayconfig.jsx';
 
 const columns = [
   {
     title: '名称',
-    dataIndex: 'departmentName',
-    sorter: (a, b) => a.departmentName.length - b.departmentName.length,
+    dataIndex: 'name',
+    sorter: (a, b) => a.name.length - b.name.length,
   },
   {
     title: '支付类型',
-    dataIndex: 'departmentCode',
-    sorter: (a, b) => a.departmentCode - b.departmentCode,
+    dataIndex: 'paymentType',
+    sorter: (a, b) => a.paymentType - b.paymentType,
     filters: [
       {
         text: '> 20000',
@@ -26,31 +26,54 @@ const columns = [
       },
     ],
     defaultFilters: ['20000'],
-    onFilter: (value, row) => row.departmentCode > value,
+    onFilter: (value, row) => row.paymentType > value,
     sortDirections: ['ascend'],
     defaultSortOrder: 'ascend',
   },
   {
-    title: '修改时间',
-    dataIndex: 'updateTime',
-    sorter: (a, b) => a.updateTime - b.updateTime,
-    filters: [
-      {
-        text: 'London',
-        value: 'London',
-      },
-      {
-        text: 'Paris',
-        value: 'Paris',
-      },
-    ],
-    onFilter: (value, row) => row.updateTime.indexOf(value) > -1,
-    filterMultiple: false,
+    title: '商户号',
+    dataIndex: 'merchantNumber',
+    sorter: (a, b) => a.merchantNumber - b.merchantNumber,
   },
   {
-    title: '修改人',
-    dataIndex: 'modifyPerson',
-    sorter: (a, b) => a.modifyPerson.length - b.modifyPerson.length,
+    title: '微信子商户',
+    dataIndex: 'wechatSubMerchant',
+    sorter: (a, b) => a.wechatSubMerchant - b.wechatSubMerchant,
+  },
+  {
+    title: '应用ID',
+    dataIndex: 'applicationId',
+    sorter: (a, b) => a.applicationId - b.applicationId,
+  },
+  {
+    title: '加密类型',
+    dataIndex: 'encryptionType',
+    sorter: (a, b) => a.encryptionType - b.encryptionType,
+  },
+  {
+    title: '商户签名密钥',
+    dataIndex: 'merchantSignatureKey',
+    sorter: (a, b) => a.merchantSignatureKey - b.merchantSignatureKey,
+  },
+  {
+    title: '通知回调',
+    dataIndex: 'notificationCallback',
+    sorter: (a, b) => a.notificationCallback - b.notificationCallback,
+  },
+  {
+    title: '支付宝卖家',
+    dataIndex: 'alipaySeller',
+    sorter: (a, b) => a.alipaySeller - b.alipaySeller,
+  },
+  {
+    title: '微信证书路径',
+    dataIndex: 'wechatCertificatePath',
+    sorter: (a, b) => a.wechatCertificatePath - b.wechatCertificatePath,
+  },
+  {
+    title: '微信证书路径',
+    dataIndex: 'wechatCertificatePath',
+    sorter: (a, b) => a.wechatCertificatePath - b.wechatCertificatePath,
   },
   {
     title: '操作',
@@ -58,37 +81,29 @@ const columns = [
     // sorter: (a, b) => a.email.length - b.email.length,
     render: (_, record) => (
       <div>
-        {/* <Button
-          style={{ marginRight: "10px" }}
-          // onClick={() => removeRow(record.key)}
-          onClick={() =>xiugai(record) }
-          type='default'
-          status='defult'
-        >
-          编辑
-        </Button>
-        <Button
-          // onClick={() => removeRow(record.key)}
-          type='primary'
-          status='danger'
-        >
-          删除
-        </Button> */}
-        <EditCommotdity record={record}/>
+        <EditPayconfig record={record}/>
       </div>
     )
   },
 ];
-// const allData = Array(200)
+
+// const AllData = Array(200)
 //   .fill('')
 //   .map((_, index) => ({
 //     key: `${index}`,
-//     departmentName: `Kevin Sandra ${index}`,
-//     departmentCode: 22000,
-//     updateTime: `${index} Park Road, London`,
-//     modifyPerson: `kevin.sandra_${index}@example.com`,
+//     name: `支付配置${index}`,
+//     paymentType: `${index}`,
+//     merchantNumber: `${index}`,
+//     wechatSubMerchant: `${index}`,
+//     applicationId: `${index}`,
+//     encryptionType: `${index}`,
+//     merchantSignatureKey: `${index}`,
+//     notificationCallback: `${index}`,
+//     alipaySeller: `${index}`,
+//     wechatCertificatePath: `${index}`,
 //   }));
-const allData = AllData;
+
+const allData = PayConfigData;
 
 
 function PayConfig() {
@@ -118,15 +133,7 @@ function PayConfig() {
 
   return (
     <div >
-
-      {/* <Space size='large'>
-     <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门名称' />
-        <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门代码' />
-        <Button type='primary' style={{ width: 130, marginRight: 0, marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>
-        <Button type='primary' style={{ width: 130, marginRight: 0, marginBottom: 10 }} icon={<IconPlus />} >添加</Button> 
-       
-      </Space> */}
-      <AddCommotdity />
+      <AddPayConfig />
       <Table
         loading={loading}
         columns={columns}
@@ -150,13 +157,6 @@ function PayConfig() {
             }}
           >
             {paginationNode}
-            {/* <Space>
-              <span>Selected {selectedRowKeys.length}</span>
-              <Button size='mini'>Save</Button>
-              <Button size='mini'>Delete</Button>
-            </Space> */}
-             
-
           </div>
         )}
       />

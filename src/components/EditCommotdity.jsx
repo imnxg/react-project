@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
 import { Modal, Button, Space, Input, Form } from '@arco-design/web-react';
-import AllData from '../mock/CommodityData.ts';
 
 const ConfigContext = createContext({});
 const FormItem = Form.Item;
@@ -23,10 +22,6 @@ function EditCommotdity({ record },) {
 
     function removeRow(key) {
         console.log(key + "------------")
-        AllData.splice(key, 1);
-        console.log("---------")
-        console.log(AllData.splice(key, 1))
-        console.log("-----------996")
     }
 
 
