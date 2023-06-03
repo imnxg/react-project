@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Table, Space, Button, Input, Select, Message } from '@arco-design/web-react';
 import { IconSearch } from '@arco-design/web-react/icon';
 import PreOrder from '../components/PreOrder';
+import RandomUpdateDate  from '../utils/RandomUpdateDate';
 
 const columns = [
   {
@@ -103,24 +104,13 @@ const columns = [
     )
   },
 ];
-// 生成随机日期
-function randomDate(start, end) {
-  start = start || new Date(2019, 0, 1);
-  let date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-  let year = date.getFullYear();
-  let month = String(date.getMonth() + 1).padStart(2, '0');
-  let day = String(date.getDate()).padStart(2, '0');
-  let hour = String(date.getHours()).padStart(2, '0');
-  let minute = String(date.getMinutes()).padStart(2, '0');
-  let second = String(date.getSeconds()).padStart(2, '0');
-  return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
-}
+
  
 const allData = Array(200)
   .fill('')
   .map((_, index) => ({
     key: `${index}`,
-    deptName: `Kevin Sandra ${index}`,
+    deptName: `kaiven ${index}`,
     orderNo: `${Math.floor(Math.random() * 1000000) + 1}`,
     tradeNo: `${Date.now()+Math.floor(Math.random() * 10000)}`,
     payType: `${Math.floor(Math.random() * 100) + 1}`,
@@ -130,7 +120,7 @@ const allData = Array(200)
     commodityName: `可乐${Math.floor(Math.random() * 100) + 1}`,
     orderStatus: `${Math.floor(Math.random() * 100) + 1}`,
     // createTime: `${(Math.floor(Math.random() * (new Date().getFullYear() - 2019 + 1)) + 2019)+'-'+(Math.floor(Math.random() * 12) + 1)+'-'+(Math.floor(Math.random() * 30) + 1)+'-'+(Math.floor(Math.random() * 24))+':'+Math.floor(Math.random() * 60)+':'+Math.floor(Math.random() * 60)}`,
-    createTime: `${randomDate(new Date(2018, 0, 1), new Date())}`,
+    createTime: `${RandomUpdateDate(new Date(2018, 0, 1), new Date())}`,
   }));
 
 /**

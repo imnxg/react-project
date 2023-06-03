@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import { Table, Space, Button,Input,Switch } from '@arco-design/web-react';
-import { IconPlus,IconSearch } from '@arco-design/web-react/icon';
+import { Table, Space, Button, Input, Switch, Select } from '@arco-design/web-react';
+import { IconPlus, IconSearch } from '@arco-design/web-react/icon';
+import AddUser from '../components/AddUser';
+import RandomUpdateDate from '../utils/RandomUpdateDate';
+import EditUser from '../components/EditUser';
 
 const columns = [
   {
@@ -12,7 +15,7 @@ const columns = [
     title: '用户名',
     dataIndex: 'userName',
     sorter: (a, b) => a.userName.length - b.userName.length,
-    
+
   },
   {
     title: '姓名',
@@ -55,7 +58,7 @@ const columns = [
     // sorter: (a, b) => a.status.length - b.status.length,
     render: (_, record) => (
       <div>
-        <Switch  checked />
+        <Switch checked={record.status === "0" ? true : false} />
       </div>
     )
   },
@@ -65,49 +68,50 @@ const columns = [
     // sorter: (a, b) => a.email.length - b.email.length,
     render: (_, record) => (
       <Space align='baseline' wrap={true} size="mini" direction="horizontal">
+        {/* <Button
+          // onClick={() => removeRow(record.key)}
+          type='text'
+          status='default'
+        >
+          编辑
+        </Button>
         <Button
-        // onClick={() => removeRow(record.key)}
-        type='text'
-        status='default'
-      >
-        编辑
-      </Button>
-      <Button
-        // onClick={() => removeRow(record.key)}
-        type='primary'
-        status='danger'
-      >
-        删除
-      </Button>
-      <Button
-        // onClick={() => removeRow(record.key)}
-        type='text'
-        status='default'
-      >
-        重置密码
-      </Button>
-      <Button
-        // onClick={() => removeRow(record.key)}
-        type='text'
-        status='default'
-      >
-        数据权限
-      </Button>
-      <Button
-        // onClick={() => removeRow(record.key)}
-        type='text'
-        status='default'
-      >
-        下线
-      </Button>
-      <Button
-        // onClick={() => removeRow(record.key)}
-        type='text'
-        status='default'
-      >
-        刷新缓存
-      </Button>
-        </Space>
+          // onClick={() => removeRow(record.key)}
+          type='primary'
+          status='danger'
+        >
+          删除
+        </Button>
+        <Button
+          // onClick={() => removeRow(record.key)}
+          type='text'
+          status='default'
+        >
+          重置密码
+        </Button>
+        <Button
+          // onClick={() => removeRow(record.key)}
+          type='text'
+          status='default'
+        >
+          数据权限
+        </Button>
+        <Button
+          // onClick={() => removeRow(record.key)}
+          type='text'
+          status='default'
+        >
+          下线
+        </Button>
+        <Button
+          // onClick={() => removeRow(record.key)}
+          type='text'
+          status='default'
+        >
+          刷新缓存
+        </Button> */}
+        <EditUser record={record}/>
+      </Space>
     )
   },
 ];
@@ -120,12 +124,9 @@ const allData = Array(200)
     name: `张三_${index}`,
     phone: `1380013800${index}`,
     gender: `${index % 2 === 0 ? '男' : '女'}`,
-    email: `kevin.sandra_${index}@example.com`,
-    updateTime: `${(Math.floor(Math.random() * (new Date().getFullYear() - 2019 + 1)) + 2019)+'-'+(Math.floor(Math.random() * 12) + 1)+'-'+(Math.floor(Math.random() * 30) + 1)+'-'+(Math.floor(Math.random() * 24))}`,
-    status: `${index % 2 === 0 ? '启用' : '禁用'}`,
-
-    // updateTime: `${index} `,
-    
+    email: `kevin_${index}@example.com`,
+    updateTime: `${RandomUpdateDate(new Date(2018, 0, 1), new Date())}`,
+    status: `${index % 2 === 0 ? 1 : 0}`,
   }));
 
 /**
@@ -158,13 +159,7 @@ function UserManagement() {
 
   return (
     <div>
-      <Space size="large" align='baseline' direction="horizontal">
-      <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130 ,marginRight: "10px",marginBottom: 10 }} allowClear placeholder='输入部门名称'/> 
-      <Input style={{ width: 130 ,marginRight: "10px",marginBottom: 10 }} allowClear placeholder='输入部门代码' />
-      <Button type='primary' style={{ marginRight: "10px",marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>
-      <Button type='primary' style={{marginRight: "10px",marginBottom: 10 }} icon={<IconPlus />} >添加</Button>
-      <Button type='primary' style={{marginRight: "10px",marginBottom: 10 }} >部门设置</Button>
-      </Space>
+      <AddUser/>
       <Table
         loading={loading}
         columns={columns}
