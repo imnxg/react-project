@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Layout, Menu, Breadcrumb, Button, Message } from '@arco-design/web-react';
-import {
-  IconHome, IconCaretRight, IconCaretLeft, IconSettings, IconBulb, IconStorage,
-} from '@arco-design/web-react/icon';
+import {IconHome, IconCaretRight, IconCaretLeft, IconSettings, IconBulb, IconStorage} from '@arco-design/web-react/icon';
 
 import IconUsers from "../assets/IconUsers";
 import IconMenu from "../assets/IconMenu";
@@ -17,12 +15,9 @@ import IconSystem from "../assets/IconSystem";
 import IconManage from "../assets/IconManage";
 import IconPay from "../assets/IconPay";
 import IconShow from "../assets/IconShow";
-
-import { Link, Outlet } from 'react-router-dom';
-import Drop from '../common/Drop';
-import Footers from '../components/Footers';
 import "../css/home.css";
-
+import { Link, Outlet  } from 'react-router-dom';
+import Drop from '../common/Drop';
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
 const Sider = Layout.Sider;
@@ -36,18 +31,15 @@ function Home() {
   const [collapsed, setCollapsed] = useState(false)
   const [itemName, setItemName] = useState("商品管理");
 
-  // const [itemId,setItemId] = useState("1_1");
-  // const [itemLink,setItemLink] = useState("");
-
-
   const handleCollapsed = () => {
     setCollapsed(!collapsed);
+    
   };
 
   return (
     <Layout className='layout-collapse-demo'>
       <Sider collapsed={collapsed} collapsible trigger={null} breakpoint='xl'>
-        {/* <div className='logo' ></div> */}
+
 
         <Menu
           defaultOpenKeys={['1']}
@@ -58,12 +50,6 @@ function Home() {
               showIcon: true,
             },
               setItemName(event.target.innerText),
-
-              // this.setState({  
-              //   setItemName: event.target.innerText,
-              //   itemId: key,
-              //   // itemLink: key=="3_1"?"commodityManagementChange":"commodityManagement",
-              //   }),
             )
 
           }
@@ -153,13 +139,6 @@ function Home() {
             <Breadcrumb.Item>{itemName}</Breadcrumb.Item>
           </Breadcrumb>
           <Content>
-            {/* <Routes>
-            
-              <Route path='/' element={<CommodityManagement />} />
-              <Route path='/commodityManagement' element={<CommodityManagement />} />
-              
-              <Route path='/commodityManagementChange' element={<CommodityManagementChange/>}/>
-            </Routes> */}
             <Outlet />
           </Content>
           <Footer></Footer>

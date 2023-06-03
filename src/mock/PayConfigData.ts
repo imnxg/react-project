@@ -52,7 +52,9 @@ const PayConfigData = Array(200)
     encryptionType: `NATIVE`,
     merchantSignatureKey: `2e3cdaf5aa051c16563c0b8916184d5d${index}`,
     notificationCallback: `http://180.166.211.210:8114/machine-pay-consumer/pay/wx/notify${index}`,
+    webchatenCryptionpassword: `3112311${index}`,
     alipaySeller: `2088121360144${index}`,
+    alipayKey: `2e3cdaf5aa051c16563c0b8916184d5d${index}`,
     wechatCertificatePath: `/usr/local/tomcat_provider/webapps/machine-service-provider-0.0.1-SNAPSHOT/conf/apiclient_cert_1250856${index}.p12`,
   }));
 

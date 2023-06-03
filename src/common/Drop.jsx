@@ -1,7 +1,7 @@
-import { Dropdown, Menu, Button, Space,Message,Modal } from '@arco-design/web-react';
-import { IconDown,IconUser } from '@arco-design/web-react/icon';
-import React,{useState} from 'react';
-import { useNavigate,Link } from "react-router-dom";
+import { Dropdown, Menu, Button, Space, Message, Modal } from '@arco-design/web-react';
+import { IconDown, IconUser } from '@arco-design/web-react/icon';
+import React, { useState } from 'react';
+import { useNavigate, Link } from "react-router-dom";
 
 
 
@@ -20,14 +20,14 @@ function Drop() {
     Modal.confirm({
       title: '提示',
       content:
-        '退出登录是否继续？',
+        '是否退出登录 ？',
       okButtonProps: {
         status: 'default',
       },
       onOk: () => {
         return new Promise((resolve, reject) => {
           setTimeout(Math.random() > 0.5 ? resolve : reject, 0);
-          navigate("/",{state:{value:111}});
+          navigate("/", { state: { value: 111 } });
           localStorage.setItem("isLogin", false);
         }).catch((e) => {
           // Message.error({
@@ -36,22 +36,29 @@ function Drop() {
           // throw e;
         });
       },
+      alignCenter: false,
+      confirmLoading: false,
+      okText: '确认',
+      cancelText: '取消',
+      closable: true,
+      simple: false,
+      unmountOnExit: true,
     });
   }
   const dropList = (
-    <Menu 
-    defaultOpenKeys={['1']}
-    defaultSelectedKeys={['1_1']}
-    onClickMenuItem={
-      (key,event) => {
-        Message.info({
-          content: `You select ${key}, ${event.target.innerText}`,
-          showIcon: true,
-      },
-      // key=="3"?setStatus(true):""
-      ) 
+    <Menu
+      defaultOpenKeys={['1']}
+      defaultSelectedKeys={['1_1']}
+      onClickMenuItem={
+        (key, event) => {
+          Message.info({
+            content: `You select ${key}, ${event.target.innerText}`,
+            showIcon: true,
+          },
+            // key=="3"?setStatus(true):""
+          )
+        }
       }
-    }
     >
       <Menu.Item key='1'>设置</Menu.Item>
       <Menu.Item key='2'>个人中心</Menu.Item>
@@ -60,17 +67,17 @@ function Drop() {
   );
 
 
-  function signOut (){
-   
-    navigate("/",{state:{value:111}});
-  
+  function signOut() {
+
+    navigate("/", { state: { value: 111 } });
+
   }
 
   return (
-    <Space className='dropdown-demo' style={{ position: "fixed",right: "0",top:"0",margin: "5px"}}>
+    <Space className='dropdown-demo' style={{ position: "fixed", right: "0", top: "0", margin: "5px" }}>
       <Dropdown droplist={dropList} position='bl'>
         <Button type='text'>
-        <IconUser />超级管理员<IconDown />
+          <IconUser />超级管理员<IconDown />
         </Button>
       </Dropdown>
       {/* <Dropdown droplist={dropList} position='bl' disabled>

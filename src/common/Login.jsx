@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/login.css';
 import { useNavigate } from "react-router-dom";
-import { Input, Button, Form } from '@arco-design/web-react';
+import { Input, Button, Form, Message } from '@arco-design/web-react';
 const FormItem = Form.Item;
 /**
  * 登录页面
@@ -18,7 +18,7 @@ function Login() {
 
   useEffect(() => {
     // 判断是否已经登录，如果已经登录，跳转到主页,自动登录
-    if (localStorage.getItem("isLogin") === "true") {
+    if (localStorage.getItem("rememberMe") === "true" && localStorage.getItem("isLogin") === "true") {
       navigate("/home", { state: { value: 111 } });
     }
   }, []);
@@ -26,7 +26,7 @@ function Login() {
   const handleLogin = () => {
     //将用户名和密码存储到本地存储中
     localStorage.setItem("username", username);
-    localStorage.setItem("password", password);
+    
     //判断是否为空，并自动检测是否为admin
     if (username == "") {
       localStorage.setItem("isLogin", false);
@@ -37,20 +37,23 @@ function Login() {
 
     // 如果用户选择了remember me，存储状态到本地存储中
     if (rememberMe) {
+      
       localStorage.setItem("rememberMe", true);
     } else {
       localStorage.removeItem("rememberMe");
     }
     //判断是否为admin
-    if (username == "admin" && password == "admin") {
+    if (username == "admin" && password == "123456") {
       localStorage.setItem("isLogin", true);
       //TODO:跳转到主页
       navigate("/home", { state: { value: 111 } });
+    } else {
+      Message.error('账号或密码错误');
+      return;
     }
 
-
     // 跳转到主页
-    navigate("/home", { state: { value: 111 } });
+    // navigate("/home", { state: { value: 111 } });
   };
 
   const handleUsernameChange = (event) => {
@@ -100,14 +103,32 @@ function Login() {
         >
           <div className="inputContainer">
             {/* <div className="inputLabel">账号</div> */}
-            <FormItem label='' field='username' rules={[{ required: true ,validateTrigger: "账号不能为空"}]}>
-              <Input type="text" onChange={handleUsernameChange} id="inputField" placeholder="请输入账号" value={username}/>
+            <FormItem label='' field='username'
+              rules={[
+                {
+                  required: true,
+                  type: 'string',
+                  min: 0,
+                  max: 99,
+                },
+              ]}
+            >
+              <Input type="text" onChange={handleUsernameChange} id="inputField" placeholder="请输入账号" value={username} />
             </FormItem>
           </div>
 
           <div className="inputContainer">
             {/* <div className="inputLabel">密码</div> */}
-            <FormItem label='' field='password' rules={[{ required: true }]}>
+            <FormItem label='' field='password'
+              rules={[
+                {
+                  required: true,
+                  type: 'string',
+                  min: 0,
+                  max: 99,
+                },
+              ]}
+            >
               <Input
                 type="password"
                 onChange={handlePasswordChange}
@@ -121,7 +142,12 @@ function Login() {
           <div className="inputContainer">
             {/* <div className="inputLabel">图形验证</div> */}
             <div className="inputFieldInvidate">
-              <FormItem label='' field='name' rules={[{ required: true }]}>
+              <FormItem label='' field='name'
+                rules={[{
+                  required: true,
+                }
+                ]}
+              >
                 <Input type="text" id='inputInvidate' onChange={handleVerificationCodeChange} placeholder="图形验证码" value={verificationCode} />
                 <span className="invidatePic"><img src="./assets/invidate.jpg" alt="imgName" className='' /></span>
               </FormItem>

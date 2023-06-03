@@ -71,11 +71,6 @@ const columns = [
     sorter: (a, b) => a.wechatCertificatePath - b.wechatCertificatePath,
   },
   {
-    title: '微信证书路径',
-    dataIndex: 'wechatCertificatePath',
-    sorter: (a, b) => a.wechatCertificatePath - b.wechatCertificatePath,
-  },
-  {
     title: '操作',
     dataIndex: 'operate',
     // sorter: (a, b) => a.email.length - b.email.length,
