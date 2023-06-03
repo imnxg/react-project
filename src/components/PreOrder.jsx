@@ -33,7 +33,7 @@ function PreOrder({ record },) {
 
     //编辑弹窗
     const config = {
-        title: '修改',
+        title: '预览',
         content: <ConfigContext.Consumer>{(name) =>
             <Space wrap>
                 <Form layout="inline">

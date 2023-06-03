@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Layout, Menu, Breadcrumb, Button, Message } from '@arco-design/web-react';
-import { IconHome, IconCalendar, IconCaretRight, IconCaretLeft, IconSettings, IconBulb,
-  IconArchive,IconStorage,IconTool,
- } from '@arco-design/web-react/icon';
-// import IconUsers from './icon/IconUsers.svg';
+import {
+  IconHome, IconCaretRight, IconCaretLeft, IconSettings, IconBulb, IconStorage,
+} from '@arco-design/web-react/icon';
+
 import IconUsers from "../assets/IconUsers";
 import IconMenu from "../assets/IconMenu";
 import IconUser from "../assets/IconUser";
@@ -11,10 +11,16 @@ import IconOrder from "../assets/IconOrder";
 import IconShop from "../assets/IconShop";
 import IconTic from "../assets/IconTic";
 import IconData from "../assets/IconData";
+import IconCompany from "../assets/IconCompany";
+import IconGlobal from "../assets/IconGlobal";
+import IconSystem from "../assets/IconSystem";
+import IconManage from "../assets/IconManage";
+import IconPay from "../assets/IconPay";
+import IconShow from "../assets/IconShow";
+
 import { Link, Outlet } from 'react-router-dom';
 import Drop from '../common/Drop';
 import Footers from '../components/Footers';
-import F from '../components/F';
 import "../css/home.css";
 
 const MenuItem = Menu.Item;
@@ -61,7 +67,6 @@ function Home() {
             )
 
           }
-          // style={{ width: '100%' }}
         >
 
           <MenuItem key='0_1' disabled>
@@ -78,7 +83,7 @@ function Home() {
               </span>
             }
           >
-            <MenuItem key='1_1'><Link to="commodityManagement"><IconShop/>  商品管理</Link></MenuItem>
+            <MenuItem key='1_1'><Link to="commodityManagement"><IconShop />  商品管理</Link></MenuItem>
           </SubMenu>
           <SubMenu
             key='2'
@@ -89,7 +94,7 @@ function Home() {
               </span>
             }
           >
-            <MenuItem key='2_1'><Link to="tradeOrder"><IconOrder/>交易订单</Link></MenuItem>
+            <MenuItem key='2_1'><Link to="tradeOrder"><IconOrder />交易订单</Link></MenuItem>
           </SubMenu>
 
           <SubMenu
@@ -104,21 +109,21 @@ function Home() {
             <MenuItem key='3_1'><Link to="userManagement"><IconUsers />用户管理</Link></MenuItem>
             <MenuItem key='3_2'><Link to="menuManagement"><IconMenu />菜单管理</Link></MenuItem>
             <MenuItem key='3_3'><Link to="roleManagement"><IconUser />角色管理</Link></MenuItem>
-            <MenuItem key='3_4'>公司管理</MenuItem>
-            <MenuItem key='3_5'><IconTool />系统环境变量</MenuItem>
-            {/* <MenuItem key='3_6'>权限管理</MenuItem> */}
+            <MenuItem key='3_4'><Link to="companyManagement"><IconCompany /> 公司管理</Link></MenuItem>
+            <MenuItem key='3_5'><Link to="systemVariable"><IconGlobal />系统环境变量</Link></MenuItem>
+            <MenuItem key='3_6'><Link to="systemPermission"><IconSystem />权限管理</Link></MenuItem>
           </SubMenu>
           <SubMenu
             key='4'
             title={
               <span>
-                <IconCalendar />
+                <IconManage />
                 支付管理
               </span>
             }
           >
-            <MenuItem key='4_1'>支付配置信息</MenuItem>
-            <MenuItem key='4_2'>支付配置</MenuItem>
+            <MenuItem key='4_1'><Link to="machineConfig"><IconPay />支付配置信息</Link></MenuItem>
+            <MenuItem key='4_2'><Link to="payConfig"><IconPay />支付配置</Link></MenuItem>
           </SubMenu>
           <SubMenu
             key='5'
@@ -129,19 +134,9 @@ function Home() {
               </span>
             }
           >
-            <MenuItem key='5_1'>数据可视化</MenuItem>
+            <MenuItem key='5_1'><Link to="charts"><IconShow />数据可视化</Link></MenuItem>
           </SubMenu>
-          <SubMenu
-            key='6'
-            title={
-              <span>
-                <IconBulb />
 
-              </span>
-            }
-          >
-            {/* <MenuItem key='5_1'>数据可视化</MenuItem>          */}
-          </SubMenu>
         </Menu>
       </Sider>
       <Layout>
@@ -169,9 +164,9 @@ function Home() {
           </Content>
           <Footer></Footer>
         </Layout>
-      
+
       </Layout>
-      
+
     </Layout>
 
   );

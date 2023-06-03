@@ -91,3 +91,8 @@ https://blog.csdn.net/mukes/article/details/115693833
 阿里镜像：
 
 https://registry.npmmirror.com/binary.html?path=git-for-windows/v2.40.0.windows.1/
+
+图标库引用：https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=45089
+
+https://www.iconfont.cn/collections/index?spm=a313x.7781069.1998910419.47
+
