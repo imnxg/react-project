@@ -3,12 +3,16 @@ import React, {
   useRef,
   useEffect,
   useContext,
-  useCallback
+  useCallback,
+  createContext
 } from 'react';
-import { Button, Table, Input, Select, Form, Space } from '@arco-design/web-react';
+import { Button, Table, Input, Select, Form, Space, Modal, Message, Empty } from '@arco-design/web-react';
 import { IconPlus, IconSearch } from '@arco-design/web-react/icon';
+import AddRole from '../components/AddRole';
+
 const FormItem = Form.Item;
 const EditableContext = React.createContext({});
+const ConfigContext = createContext({});
 
 function EditableRow(props) {
   const { children, record, className, ...rest } = props;
@@ -134,7 +138,7 @@ function EditableCell(props) {
  */
 function RoleManagement() {
   const [count, setCount] = useState(5);
-  const [loading,setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const allData = [
     {
@@ -269,7 +273,7 @@ function RoleManagement() {
       render: (_, record) => (
         <Space size='middle'>
           <Button
-            onClick={() => { removeRow(record.key); console.log(record) }}
+            onClick={() => { editRole(record); console.log(record) }}
             type='primary'
             status='default'
           >
@@ -283,9 +287,10 @@ function RoleManagement() {
             删除
           </Button>
           <Button
-            onClick={() => { removeRow(record.key); console.log(record) }}
+            onClick={() => { menuPermissions(record); console.log(record) }}
             type='primary'
             status='default'
+            style={{ backgroundColor: '#52c41a', borderColor: '#52c41a' }}
           >
             菜单权限
           </Button>
@@ -317,8 +322,75 @@ function RoleManagement() {
     setData(newData);
   }
 
+  function editRole(record) {
+    Modal.confirm({
+      title: '修改',
+      content:
+        <Form>
+          <FormItem label='系统编号' field='key' initialValue={record.key}>
+            <Input placeholder='请输入部门名称' />
+          </FormItem>
+          <FormItem label='角色名称' field='roleName' initialValue={record.roleName}>
+            <Input placeholder='请输入角色名称' />
+          </FormItem>
+          <FormItem label='角色代码' field='roleCode' initialValue={record.roleCode}>
+            <Input placeholder='请输入角色代码' />
+          </FormItem>
+        </Form>
+      ,
+      okButtonProps: {
+        status: 'default',
+      },
+      onOk: () => {
+        return new Promise((resolve, reject) => {
+          setTimeout(Math.random() > 0.5 ? resolve : reject, 10);
+          Message.success({
+            content: '保存成功!',
+          });
+        }).catch((e) => {
+          console.log(e);
+        });
+      },
+      alignCenter: false,
+      confirmLoading: false,
+      okText: '保存',
+      cancelText: '取消',
+      closable: true,
+      simple: false,
+      unmountOnExit: true,
+    });
+
+  }
   function removeRow(key) {
     setData(data.filter(item => item.key !== key));
+  }
+  function menuPermissions(record) {
+    Modal.confirm({
+      title: '修改',
+      content:
+       <Empty description='暂无数据' />
+      ,
+      okButtonProps: {
+        status: 'default',
+      },
+      onOk: () => {
+        return new Promise((resolve, reject) => {
+          setTimeout(Math.random() > 0.5 ? resolve : reject, 10);
+          Message.success({
+            content: '保存成功!',
+          });
+        }).catch((e) => {
+          console.log(e);
+        });
+      },
+      alignCenter: false,
+      confirmLoading: false,
+      okText: '保存',
+      cancelText: '取消',
+      closable: true,
+      simple: false,
+      unmountOnExit: true,
+    });
   }
 
   function addRow() {
@@ -336,7 +408,7 @@ function RoleManagement() {
 
   return (
     <>
-      <Space size='large'>
+      {/* <Space size='large'>
         <center style={{ width: 60, marginRight: -20, marginBottom: 10 }}>搜索：</center>
         <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入角色名称' />
         <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入角色代码' />
@@ -344,8 +416,8 @@ function RoleManagement() {
         <Button type='primary' style={{ marginBottom: 10 }} icon={<IconPlus />}
           onClick={addRow}
         >添加</Button>
-      </Space>
-
+      </Space> */}
+      <AddRole/>
       <Table
         loading={loading}
         data={data}

@@ -1,34 +1,30 @@
 import { useState } from 'react';
 import { Table, Button, Input,Message,Space,Modal,Form } from '@arco-design/web-react';
 import { IconPlus, IconSearch } from '@arco-design/web-react/icon';
-import AllData from '../mock/commodity.ts';
-import AddCommotdity from '../components/AddCommotdity.jsx';
-import EditCommotdity from '../components/EditCommotdity.jsx';
+import MachineConfigData from '../mock/MachineConfigData.ts';
+import AddMachineConfig from '../components/AddMachineConfig.jsx';
+import EditMachineConfig from '../components/EditMachineConfig.jsx';
 
 const columns = [
   {
     title: '终端编号',
-    dataIndex: 'departmentName',
-    sorter: (a, b) => a.departmentName.length - b.departmentName.length,
+    dataIndex: 'terminalNumber',
+    sorter: (a, b) => a.terminalNumber.length - b.terminalNumber.length,
   },
   {
-    title: '部门代码',
-    dataIndex: 'departmentCode',
-    sorter: (a, b) => a.departmentCode - b.departmentCode,
-    filters: [
-      {
-        text: '> 20000',
-        value: '20000',
-      },
-      {
-        text: '> 30000',
-        value: '30000',
-      },
-    ],
-    defaultFilters: ['20000'],
-    onFilter: (value, row) => row.departmentCode > value,
-    sortDirections: ['ascend'],
-    defaultSortOrder: 'ascend',
+    title: '支付方式',
+    dataIndex: 'paymentMethod',
+    sorter: (a, b) => a.paymentMethod - b.paymentMethod,
+  },
+  {
+    title: '显示名称',
+    dataIndex: 'displayName',
+    sorter: (a, b) => a.displayName - b.displayName,
+  },
+  {
+    title: '状态',
+    dataIndex: 'status',
+    sorter: (a, b) => a.status - b.status,
   },
   {
     title: '修改时间',
@@ -58,37 +54,13 @@ const columns = [
     // sorter: (a, b) => a.email.length - b.email.length,
     render: (_, record) => (
       <div>
-        {/* <Button
-          style={{ marginRight: "10px" }}
-          // onClick={() => removeRow(record.key)}
-          onClick={() =>xiugai(record) }
-          type='default'
-          status='defult'
-        >
-          编辑
-        </Button>
-        <Button
-          // onClick={() => removeRow(record.key)}
-          type='primary'
-          status='danger'
-        >
-          删除
-        </Button> */}
-        <EditCommotdity record={record}/>
+        <EditMachineConfig record={record}/>
       </div>
     )
   },
 ];
-// const allData = Array(200)
-//   .fill('')
-//   .map((_, index) => ({
-//     key: `${index}`,
-//     departmentName: `Kevin Sandra ${index}`,
-//     departmentCode: 22000,
-//     updateTime: `${index} Park Road, London`,
-//     modifyPerson: `kevin.sandra_${index}@example.com`,
-//   }));
-const allData = AllData;
+
+const allData = MachineConfigData;
 
 
 function MachineConfig() {
@@ -118,15 +90,7 @@ function MachineConfig() {
 
   return (
     <div >
-
-      {/* <Space size='large'>
-     <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门名称' />
-        <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门代码' />
-        <Button type='primary' style={{ width: 130, marginRight: 0, marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>
-        <Button type='primary' style={{ width: 130, marginRight: 0, marginBottom: 10 }} icon={<IconPlus />} >添加</Button> 
-       
-      </Space> */}
-      <AddCommotdity />
+      <AddMachineConfig />
       <Table
         loading={loading}
         columns={columns}
@@ -150,13 +114,6 @@ function MachineConfig() {
             }}
           >
             {paginationNode}
-            {/* <Space>
-              <span>Selected {selectedRowKeys.length}</span>
-              <Button size='mini'>Save</Button>
-              <Button size='mini'>Delete</Button>
-            </Space> */}
-             
-
           </div>
         )}
       />

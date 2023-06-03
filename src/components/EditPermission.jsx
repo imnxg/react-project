@@ -1,12 +1,11 @@
 import { createContext, useState, useEffect } from 'react';
-import { Modal, Button, Space, Input, Form } from '@arco-design/web-react';
-import AllData from '../mock/CommodityData.ts';
+import { Modal, Button, Space, Input, Form, Message } from '@arco-design/web-react';
 
 const ConfigContext = createContext({});
 const FormItem = Form.Item;
 
 
-function EditCommotdity({ record },) {
+function EditPermission({ record },) {
     const [modal, contextHolder] = Modal.useModal();
     const [visible, setVisible] = useState(true);
     // const [confirmLoading, setConfirmLoading] = useState(false);
@@ -17,16 +16,12 @@ function EditCommotdity({ record },) {
 
     function onOk() {
         setVisible(false);
-
-        console.log("test:部门名称" + record.departmentName);
+        Message.success('Success !');
+        console.log("test:部门名称" + record.permissionName);
     }
 
     function removeRow(key) {
         console.log(key + "------------")
-        AllData.splice(key, 1);
-        console.log("---------")
-        console.log(AllData.splice(key, 1))
-        console.log("-----------996")
     }
 
 
@@ -37,10 +32,10 @@ function EditCommotdity({ record },) {
         title: '修改',
         content: <ConfigContext.Consumer>{(name) =>
             <Form>
-                <FormItem label='部门名称' field='departmentName' initialValue={name.departmentName}>
+                <FormItem label='权限名称' field='permissionName' initialValue={name.permissionName}>
                     <Input placeholder='请输入部门名称' />
                 </FormItem>
-                <FormItem label='部门密码' field='departmentCode' initialValue={name.departmentCode}>
+                <FormItem label='权限CODE' field='permissionCode' initialValue={name.permissionCode}>
                     <Input placeholder='请输入部门名称' />
                 </FormItem>
             </Form>
@@ -58,7 +53,7 @@ function EditCommotdity({ record },) {
     //删除 
     const deleteCom = {
         title: '删除',
-        content: <ConfigContext.Consumer>{(name) => `确定要删除${name.departmentName}吗？`}
+        content: <ConfigContext.Consumer>{(name) => `确定要删除${name.permissionName}吗？`}
         </ConfigContext.Consumer>,
         alignCenter: false,
         confirmLoading: false,
@@ -94,4 +89,4 @@ function EditCommotdity({ record },) {
     );
 }
 
-export default EditCommotdity;
+export default EditPermission;

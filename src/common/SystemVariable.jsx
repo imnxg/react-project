@@ -1,34 +1,24 @@
 import { useState } from 'react';
 import { Table, Button, Input,Message,Space,Modal,Form } from '@arco-design/web-react';
 import { IconPlus, IconSearch } from '@arco-design/web-react/icon';
-import AllData from '../mock/commodity.ts';
-import AddCommotdity from '../components/AddCommotdity.jsx';
-import EditCommotdity from '../components/EditCommotdity.jsx';
+import SystemVariableData from '../mock/SystemVariableData.ts';
+import AddVariable from '../components/AddVariable.jsx';
+import EditVariable from '../components/EditVariable.jsx';
 
 const columns = [
   {
-    title: '部门名称',
-    dataIndex: 'departmentName',
-    sorter: (a, b) => a.departmentName.length - b.departmentName.length,
+    title: '变量描述',
+    dataIndex: 'variableDescription',
+    sorter: (a, b) => a.variableDescription.length - b.variableDescription.length,
   },
   {
-    title: '部门代码',
-    dataIndex: 'departmentCode',
-    sorter: (a, b) => a.departmentCode - b.departmentCode,
-    filters: [
-      {
-        text: '> 20000',
-        value: '20000',
-      },
-      {
-        text: '> 30000',
-        value: '30000',
-      },
-    ],
-    defaultFilters: ['20000'],
-    onFilter: (value, row) => row.departmentCode > value,
-    sortDirections: ['ascend'],
-    defaultSortOrder: 'ascend',
+    title: '变量名称',
+    dataIndex: 'variableName',
+  },
+  {
+    title: '变量路径',
+    dataIndex: 'variablePath',
+    sorter: (a, b) => a.variablePath - b.variablePath,
   },
   {
     title: '修改时间',
@@ -74,21 +64,13 @@ const columns = [
         >
           删除
         </Button> */}
-        <EditCommotdity record={record}/>
+        <EditVariable record={record}/>
       </div>
     )
   },
 ];
-// const allData = Array(200)
-//   .fill('')
-//   .map((_, index) => ({
-//     key: `${index}`,
-//     departmentName: `Kevin Sandra ${index}`,
-//     departmentCode: 22000,
-//     updateTime: `${index} Park Road, London`,
-//     modifyPerson: `kevin.sandra_${index}@example.com`,
-//   }));
-const allData = AllData;
+
+const allData = SystemVariableData;
 
 
 function SystemVariable() {
@@ -126,7 +108,7 @@ function SystemVariable() {
         <Button type='primary' style={{ width: 130, marginRight: 0, marginBottom: 10 }} icon={<IconPlus />} >添加</Button> 
        
       </Space> */}
-      <AddCommotdity />
+      <AddVariable />
       <Table
         loading={loading}
         columns={columns}

@@ -1,16 +1,14 @@
 import { createContext, useState, useEffect } from 'react';
 import { Modal, Button, Space, Input, Form } from '@arco-design/web-react';
-import AllData from '../mock/CommodityData.ts';
 
 const ConfigContext = createContext({});
 const FormItem = Form.Item;
 
 
-function EditCommotdity({ record },) {
+function EditVariable({ record }) {
     const [modal, contextHolder] = Modal.useModal();
     const [visible, setVisible] = useState(true);
-    // const [confirmLoading, setConfirmLoading] = useState(false);
-    // const [form] = Form.useForm();
+
     useEffect(() => {
         setVisible(true);
     }, [visible]);
@@ -23,10 +21,6 @@ function EditCommotdity({ record },) {
 
     function removeRow(key) {
         console.log(key + "------------")
-        AllData.splice(key, 1);
-        console.log("---------")
-        console.log(AllData.splice(key, 1))
-        console.log("-----------996")
     }
 
 
@@ -37,11 +31,14 @@ function EditCommotdity({ record },) {
         title: '修改',
         content: <ConfigContext.Consumer>{(name) =>
             <Form>
-                <FormItem label='部门名称' field='departmentName' initialValue={name.departmentName}>
-                    <Input placeholder='请输入部门名称' />
+                <FormItem label='变量名称' field='variableDescription' initialValue={name.variableDescription}>
+                    <Input placeholder='请输入变量名称' />
                 </FormItem>
-                <FormItem label='部门密码' field='departmentCode' initialValue={name.departmentCode}>
-                    <Input placeholder='请输入部门名称' />
+                <FormItem label='变量名称' field='variableName' initialValue={name.variableName}>
+                    <Input placeholder='请输入变量名称' />
+                </FormItem>
+                <FormItem label='变量路径' field='variablePath' initialValue={name.variablePath}>
+                    <Input placeholder='请输入变量路径' />
                 </FormItem>
             </Form>
         }
@@ -62,7 +59,7 @@ function EditCommotdity({ record },) {
         </ConfigContext.Consumer>,
         alignCenter: false,
         confirmLoading: false,
-        okText: '删除',
+        okText: '确认',
         cancelText: '取消',
         closable: true,
         simple: false,
@@ -94,4 +91,4 @@ function EditCommotdity({ record },) {
     );
 }
 
-export default EditCommotdity;
+export default EditVariable;

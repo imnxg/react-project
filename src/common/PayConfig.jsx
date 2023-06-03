@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Table, Button, Input,Message,Space,Modal,Form } from '@arco-design/web-react';
 import { IconPlus, IconSearch } from '@arco-design/web-react/icon';
-import AllData from '../mock/commodity.ts';
+import AllData from '../mock/CommodityData.ts';
 import AddCommotdity from '../components/AddCommotdity.jsx';
 import EditCommotdity from '../components/EditCommotdity.jsx';
 

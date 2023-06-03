@@ -1,51 +1,25 @@
 import { useState } from 'react';
 import { Table, Button, Input,Message,Space,Modal,Form } from '@arco-design/web-react';
 import { IconPlus, IconSearch } from '@arco-design/web-react/icon';
-import AllData from '../mock/commodity.ts';
-import AddCommotdity from '../components/AddCommotdity.jsx';
-import EditCommotdity from '../components/EditCommotdity.jsx';
+import SystemPermissionData from '../mock/SystemPermissionData.ts';
+import AddPermission from '../components/AddPermission.jsx';
+import EditPermission from '../components/EditPermission.jsx';
 
 const columns = [
   {
-    title: '部门名称',
-    dataIndex: 'departmentName',
-    sorter: (a, b) => a.departmentName.length - b.departmentName.length,
+    title: '权限名称',
+    dataIndex: 'permissionName',
+    sorter: (a, b) => a.permissionName.length - b.permissionName.length,
   },
   {
-    title: '部门代码',
-    dataIndex: 'departmentCode',
-    sorter: (a, b) => a.departmentCode - b.departmentCode,
-    filters: [
-      {
-        text: '> 20000',
-        value: '20000',
-      },
-      {
-        text: '> 30000',
-        value: '30000',
-      },
-    ],
-    defaultFilters: ['20000'],
-    onFilter: (value, row) => row.departmentCode > value,
-    sortDirections: ['ascend'],
-    defaultSortOrder: 'ascend',
+    title: '权限CODE',
+    dataIndex: 'permissionCode',
+    sorter: (a, b) => a.permissionCode - b.permissionCode,
   },
   {
     title: '修改时间',
     dataIndex: 'updateTime',
     sorter: (a, b) => a.updateTime - b.updateTime,
-    filters: [
-      {
-        text: 'London',
-        value: 'London',
-      },
-      {
-        text: 'Paris',
-        value: 'Paris',
-      },
-    ],
-    onFilter: (value, row) => row.updateTime.indexOf(value) > -1,
-    filterMultiple: false,
   },
   {
     title: '修改人',
@@ -58,37 +32,13 @@ const columns = [
     // sorter: (a, b) => a.email.length - b.email.length,
     render: (_, record) => (
       <div>
-        {/* <Button
-          style={{ marginRight: "10px" }}
-          // onClick={() => removeRow(record.key)}
-          onClick={() =>xiugai(record) }
-          type='default'
-          status='defult'
-        >
-          编辑
-        </Button>
-        <Button
-          // onClick={() => removeRow(record.key)}
-          type='primary'
-          status='danger'
-        >
-          删除
-        </Button> */}
-        <EditCommotdity record={record}/>
+        <EditPermission record={record}/>
       </div>
     )
   },
 ];
-// const allData = Array(200)
-//   .fill('')
-//   .map((_, index) => ({
-//     key: `${index}`,
-//     departmentName: `Kevin Sandra ${index}`,
-//     departmentCode: 22000,
-//     updateTime: `${index} Park Road, London`,
-//     modifyPerson: `kevin.sandra_${index}@example.com`,
-//   }));
-const allData = AllData;
+
+const allData = SystemPermissionData;
 
 
 function SystemPermission() {
@@ -118,15 +68,7 @@ function SystemPermission() {
 
   return (
     <div >
-
-      {/* <Space size='large'>
-     <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门名称' />
-        <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门代码' />
-        <Button type='primary' style={{ width: 130, marginRight: 0, marginBottom: 10 }} icon={<IconSearch />}>搜索</Button>
-        <Button type='primary' style={{ width: 130, marginRight: 0, marginBottom: 10 }} icon={<IconPlus />} >添加</Button> 
-       
-      </Space> */}
-      <AddCommotdity />
+      <AddPermission />
       <Table
         loading={loading}
         columns={columns}
@@ -150,13 +92,6 @@ function SystemPermission() {
             }}
           >
             {paginationNode}
-            {/* <Space>
-              <span>Selected {selectedRowKeys.length}</span>
-              <Button size='mini'>Save</Button>
-              <Button size='mini'>Delete</Button>
-            </Space> */}
-             
-
           </div>
         )}
       />

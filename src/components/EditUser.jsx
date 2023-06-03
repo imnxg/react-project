@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
 import { Modal, Button, Space, Input, Form, Select, Radio,Empty,Message} from '@arco-design/web-react';
-import AllData from '../mock/commodity.ts';
 
 const ConfigContext = createContext({});
 const FormItem = Form.Item;
