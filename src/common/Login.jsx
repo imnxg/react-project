@@ -102,7 +102,6 @@ function Login() {
           }}
         >
           <div className="inputContainer">
-            {/* <div className="inputLabel">账号</div> */}
             <FormItem label='' field='username'
               rules={[
                 {
@@ -118,7 +117,6 @@ function Login() {
           </div>
 
           <div className="inputContainer">
-            {/* <div className="inputLabel">密码</div> */}
             <FormItem label='' field='password'
               rules={[
                 {
@@ -140,7 +138,6 @@ function Login() {
           </div>
 
           <div className="inputContainer">
-            {/* <div className="inputLabel">图形验证</div> */}
             <div className="inputFieldInvidate">
               <FormItem label='' field='name'
                 rules={[{

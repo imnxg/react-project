@@ -119,7 +119,6 @@ const allData = Array(200)
     payPrice: `${Math.floor(Math.random() * 100) + 1}`,
     commodityName: `可乐${Math.floor(Math.random() * 100) + 1}`,
     orderStatus: `${Math.floor(Math.random() * 100) + 1}`,
-    // createTime: `${(Math.floor(Math.random() * (new Date().getFullYear() - 2019 + 1)) + 2019)+'-'+(Math.floor(Math.random() * 12) + 1)+'-'+(Math.floor(Math.random() * 30) + 1)+'-'+(Math.floor(Math.random() * 24))+':'+Math.floor(Math.random() * 60)+':'+Math.floor(Math.random() * 60)}`,
     createTime: `${RandomUpdateDate(new Date(2018, 0, 1), new Date())}`,
   }));
 
@@ -159,7 +158,7 @@ function TradeOrder() {
     <div>
       <Space size='large'>
 
-        <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入部门名称' />
+        <center style={{ marginRight: -20, marginBottom: 10 }} >搜索：</center><Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入终端编号' />
         <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入订单号' />
         <Input style={{ width: 130, marginRight: 0, marginBottom: 10 }} allowClear placeholder='输入交易号' />
         <Select
@@ -221,11 +220,6 @@ function TradeOrder() {
             }}
           >
             {paginationNode}
-            {/* <Space>
-              <span>Selected {selectedRowKeys.length}</span>
-              <Button size='mini'>Save</Button>
-              <Button size='mini'>Delete</Button>
-            </Space> */}
 
           </div>
         )}

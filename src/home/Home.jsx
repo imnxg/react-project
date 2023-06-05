@@ -69,7 +69,7 @@ function Home() {
               </span>
             }
           >
-            <MenuItem key='1_1'><Link to="commodityManagement"><IconShop />  商品管理</Link></MenuItem>
+            <MenuItem key='1_1'><Link to="commodityManagement"><IconShop />  部门管理</Link></MenuItem>
           </SubMenu>
           <SubMenu
             key='2'

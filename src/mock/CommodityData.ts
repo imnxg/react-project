@@ -4,7 +4,7 @@ const Data = [
     departmentName: 'xx某公司',
     departmentCode: 23000,
     updateTime: '2023-05-19 14:11:46',
-    modifyPerson: '张三',
+    modifyPerson: 'nxg',
   },
   {
     key: '2',

@@ -22,10 +22,6 @@ function PreOrder({ record },) {
 
     function removeRow(key) {
         console.log(key + "------------")
-        AllData.splice(key, 1);
-        console.log("---------")
-        console.log(AllData.splice(key, 1))
-        console.log("-----------996")
     }
 
 
@@ -38,34 +34,34 @@ function PreOrder({ record },) {
             <Space wrap>
                 <Form layout="inline">
                     <FormItem label='终端编号' field='deptName' disabled initialValue={name.deptName}>
-                        <Input placeholder='请输入部门名称' />
+                        <Input placeholder='请输入终端编号' />
                     </FormItem>
                     <FormItem label='订单编号' field='orderNo' disabled initialValue={name.orderNo}>
-                        <Input placeholder='请输入部门名称' />
+                        <Input placeholder='请输入订单编号' />
                     </FormItem>
                     <FormItem label='交易单号' field='tradeNo' disabled initialValue={name.tradeNo}>
-                        <Input placeholder='请输入部门名称' />
+                        <Input placeholder='请输入交易单号' />
                     </FormItem>
                     <FormItem label='支付方式' field='payType' disabled initialValue={name.payType}>
-                        <Input placeholder='请输入部门名称' />
+                        <Input placeholder='请输入支付方式' />
                     </FormItem>
                     <FormItem label='交易类型' field='tradeType' disabled initialValue={name.tradeType}>
-                        <Input placeholder='请输入部门名称' />
+                        <Input placeholder='请输入交易类型' />
                     </FormItem>
                     <FormItem label='商品价格' field='commodityPrice' disabled initialValue={name.commodityPrice}>
-                        <Input placeholder='请输入部门名称' />
+                        <Input placeholder='请输入商品价格' />
                     </FormItem>
-                    <FormItem label='支付金额' field='payPrice' disabled initialValue={name.payPrice}>
-                        <Input placeholder='请输入部门名称' />
+                    <FormItem label='商品价格' field='payPrice' disabled initialValue={name.payPrice}>
+                        <Input placeholder='请输入商品价格' />
                     </FormItem>
                     <FormItem label='商品名称' field='commodityName' disabled initialValue={name.commodityName}>
-                        <Input placeholder='请输入部门名称' />
+                        <Input placeholder='请输入商品名称' />
                     </FormItem>
                     <FormItem label='订单状态' field='orderStatus' disabled initialValue={name.orderStatus}>
-                        <Input placeholder='请输入部门名称' />
+                        <Input placeholder='请输入订单状态' />
                     </FormItem>
                     <FormItem label='创建时间' field='createTime' disabled initialValue={name.createTime}>
-                        <Input placeholder='请输入部门名称' />
+                        <Input placeholder='请输入创建时间' />
                     </FormItem>
                 </Form>
             </Space>

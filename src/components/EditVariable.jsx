@@ -15,8 +15,6 @@ function EditVariable({ record }) {
 
     function onOk() {
         setVisible(false);
-
-        console.log("test:部门名称" + record.departmentName);
     }
 
     function removeRow(key) {
@@ -55,7 +53,7 @@ function EditVariable({ record }) {
     //删除 
     const deleteCom = {
         title: '删除',
-        content: <ConfigContext.Consumer>{(name) => `确定要删除${name.departmentName}吗？`}
+        content: <ConfigContext.Consumer>{(name) => `确定要删除吗？`}
         </ConfigContext.Consumer>,
         alignCenter: false,
         confirmLoading: false,

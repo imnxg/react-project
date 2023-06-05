@@ -35,8 +35,8 @@ function EditCommotdity({ record },) {
                 <FormItem label='部门名称' field='departmentName' initialValue={name.departmentName}>
                     <Input placeholder='请输入部门名称' />
                 </FormItem>
-                <FormItem label='部门密码' field='departmentCode' initialValue={name.departmentCode}>
-                    <Input placeholder='请输入部门名称' />
+                <FormItem label='部门代码' field='departmentCode' initialValue={name.departmentCode}>
+                    <Input placeholder='请输入部门代码' />
                 </FormItem>
             </Form>
         }
