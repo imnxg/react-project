@@ -24,8 +24,8 @@ function App() {
     <div>
 
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="home" element={<Home />} >
+          <Route path="/" exact element={<Login />} />
+          <Route path="home" exact element={<Home />} >
             <Route index element={<CommodityManagement />} />
             <Route path='commodityManagement' element={<CommodityManagement />} />
             <Route path='tradeOrder' element={<TradeOrder />} />

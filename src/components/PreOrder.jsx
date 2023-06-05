@@ -96,7 +96,7 @@ function PreOrder({ record },) {
             <ConfigContext.Provider value={record}>
                 {contextHolder}
                 <Button
-                    style={{ marginRight: "10px", marginRight: 8, }}
+                    style={{ marginRight: "10px" }}
                     onClick={() => modal.confirm(config)}
                     type='text'
                     status='default'
