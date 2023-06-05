@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Menu, Breadcrumb, Button, Message } from '@arco-design/web-react';
-import {IconHome, IconCaretRight, IconCaretLeft, IconSettings, IconBulb, IconStorage} from '@arco-design/web-react/icon';
+import { IconHome, IconCaretRight, IconCaretLeft, IconSettings, IconBulb, IconStorage } from '@arco-design/web-react/icon';
 
 import IconUsers from "../assets/IconUsers";
 import IconMenu from "../assets/IconMenu";
@@ -16,7 +16,7 @@ import IconManage from "../assets/IconManage";
 import IconPay from "../assets/IconPay";
 import IconShow from "../assets/IconShow";
 import "../css/home.css";
-import { Link, Outlet  } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import Drop from '../common/Drop';
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
@@ -33,7 +33,7 @@ function Home() {
 
   const handleCollapsed = () => {
     setCollapsed(!collapsed);
-    
+
   };
 
   return (
@@ -54,12 +54,10 @@ function Home() {
 
           }
         >
-
           <MenuItem key='0_1' disabled>
             <IconHome />
             主页
           </MenuItem>
-
           <SubMenu
             key='1'
             title={

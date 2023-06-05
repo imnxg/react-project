@@ -52,8 +52,6 @@ function Login() {
       return;
     }
 
-    // 跳转到主页
-    // navigate("/home", { state: { value: 111 } });
   };
 
   const handleUsernameChange = (event) => {

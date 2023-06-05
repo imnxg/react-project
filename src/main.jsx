@@ -28,7 +28,6 @@ function App() {
           <Route path="home" element={<Home />} >
             <Route index element={<CommodityManagement />} />
             <Route path='commodityManagement' element={<CommodityManagement />} />
-            
             <Route path='tradeOrder' element={<TradeOrder />} />
             <Route path='userManagement' element={<UserManagement />} />
             <Route path='menuManagement' element={<MenuManagement />} />
