@@ -29,6 +29,7 @@ function Drop() {
           setTimeout(Math.random() > 0.5 ? resolve : reject, 0);
           navigate("/", { state: { value: 111 } });
           localStorage.setItem("isLogin", false);
+          localStorage.removeItem("rememberMe");
         }).catch((e) => {
           // Message.error({
           //   content: 'Error occurs!',

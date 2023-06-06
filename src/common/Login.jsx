@@ -20,36 +20,69 @@ function Login() {
     // 判断是否已经登录，如果已经登录，跳转到主页,自动登录
     if (localStorage.getItem("rememberMe") === "true" && localStorage.getItem("isLogin") === "true") {
       navigate("/home", { state: { value: 111 } });
+      setTimeout(() => {
+        Message.success('登录成功！');
+      }, 500);
     }
   }, []);
 
   const handleLogin = () => {
     //将用户名和密码存储到本地存储中
     localStorage.setItem("username", username);
-    
-    //判断是否为空，并自动检测是否为admin
-    if (username == "") {
-      localStorage.setItem("isLogin", false);
-    }
-    if (password == "") {
-      localStorage.setItem("isLogin", false);
-    }
+
 
     // 如果用户选择了remember me，存储状态到本地存储中
     if (rememberMe) {
-      
       localStorage.setItem("rememberMe", true);
     } else {
       localStorage.removeItem("rememberMe");
     }
     //判断是否为admin
-    if (username == "admin" && password == "123456") {
+    if (username == "admin" && password == "123456" && verificationCode == "3n3d") {
       localStorage.setItem("isLogin", true);
       //TODO:跳转到主页
       navigate("/home", { state: { value: 111 } });
+      setTimeout(() => {
+        Message.success('登录成功！');
+      }, 500);
+
     } else {
-      Message.error('账号或密码错误');
-      return;
+      //判断是否为空，并自动检测是否为admin
+      if (username == "") {
+        setTimeout(() => {
+          Message.error('账号不能为空！');
+          localStorage.setItem("isLogin", false);
+        }, 500);
+        return;
+      }
+      if (password == "") {
+        setTimeout(() => {
+          Message.error('密码不能为空！');
+          localStorage.setItem("isLogin", false);
+        }, 500);
+
+        return;
+      }
+      if (verificationCode == "") {
+        setTimeout(() => {
+          Message.error('验证码不能为空！');
+          localStorage.setItem("isLogin", false);
+        }, 500);
+        return;
+      }
+      if (username != "admin") {
+        Message.error('账号不存在');
+        return;
+
+      }
+      if (password != "123456") {
+        Message.error('密码错误');
+        return;
+      }
+      if (verificationCode != "3n3d") {
+        Message.error('验证码错误');
+        return;
+      }
     }
 
   };

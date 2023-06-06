@@ -11,44 +11,38 @@ tree -I node_modules -r -L 2
 ```
 目录结构如下：
 ```
-.
-|-- vite.config.js
+|-- vite.config.js		vite配置
 |-- src
-|   |-- mock
-|   |-- main.jsx
-|   |-- index.css
-|   |-- home
-|   |-- css
-|   |-- common
-|   |-- assets
-|   |-- App.jsx
-|   `-- App.css
-|-- public
-|   `-- vite.svg
+|   |-- utils   		工具
+|   |-- mock			公共组件模拟数据	
+|   |-- main.jsx   		入口
+|   |-- index.css		全局样式
+|   |-- home       		主页（布局）
+|   |-- css        		css样式
+|   |-- components  	各组件
+|   |-- common			页面
+|   `-- assets
+|-- public				静态资源（图片引用，相对路径）
+|   |-- vite.svg
+|   |-- icon
+|   `-- assets
 |-- package.json
 |-- package-lock.json
-|-- note
-|   |-- \263\365\312\274\321\371\312\275.md
-|   |-- \261\250\270\346.md
+|-- note				笔记
 |   |-- router-v6.md
 |   |-- note.md
 |   |-- assets
 |   `-- arco-design.md
-|-- index.html
-`-- README.md
+|-- index.html			
+`-- README.md	
 
 9 directories, 15 files
 
 ```
-
+## 环境
+Node.js v18.14.2
 
 ## 拉取和运行项目
-
-拉取项目
-
-```
-git clone ...
-```
 
 安装依赖
 ```
@@ -66,8 +60,12 @@ npm run dev
 ```
 npm run build
 ```
+账号：admin
+密码：123456
+验证码：3n3d
 
-## 效果
+线上地址：[https://react.nnxx.me/](https://react.nnxx.me/)
+
 
 
 
